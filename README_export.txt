@@ -70,7 +70,8 @@ Current summary:
 - yolo_tile_32: 23 trainable instances (23 clear, 0 compact), 0 edge/invalid ignored, 16 uncertain ignored, 24 in-tile nuclei, 3 intersecting stroma regions, size 512x512
 - yolo_tile_33: 20 trainable instances (20 clear, 0 compact), 0 edge/invalid ignored, 21 uncertain ignored, 21 in-tile nuclei, 3 intersecting stroma regions, size 512x512
 - yolo_tile_34: 17 trainable instances (17 clear, 0 compact), 0 edge/invalid ignored, 21 uncertain ignored, 17 in-tile nuclei, 2 intersecting stroma regions, size 512x512
+- yolo_tile_35: 6 trainable instances (5 clear, 1 compact), 0 edge/invalid ignored, 15 uncertain ignored, 6 in-tile nuclei, 2 intersecting stroma regions, size 512x512
 
-Total trainable instances: 738 (617 clear, 121 compact)
-Total uncertain ignored regions: 413
+Total trainable instances: 744 (622 clear, 122 compact)
+Total uncertain ignored regions: 428
 Total edge/invalid ignored boundaries: 74

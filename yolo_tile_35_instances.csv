@@ -1,0 +1,7 @@
+instance_label,boundary_name,boundary_class,nucleus_name,boundary_area_px,local_centroid_x,local_centroid_y,wsi_centroid_x,wsi_centroid_y,nucleus_wsi_x,nucleus_wsi_y,stroma_overlap_px,stroma_overlap_fraction
+"1","yolo_T35_ClearCellBoundary_001","GT Clear cell boundary","yolo_T35_Nucleus_001","5453.5","463.7","33.3","36335.7","45965.3","36353.5","45959.0","0.0","0.0000"
+"2","yolo_T35_ClearCellBoundary_002","GT Clear cell boundary","yolo_T35_Nucleus_002","8206.4","361.8","133.1","36233.8","46065.1","36239.5","46089.5","0.0","0.0000"
+"3","yolo_T35_ClearCellBoundary_003","GT Clear cell boundary","yolo_T35_Nucleus_004","9512.7","247.8","155.5","36119.8","46087.5","36095.5","46142.0","0.0","0.0000"
+"4","yolo_T35_ClearCellBoundary_004","GT Clear cell boundary","yolo_T35_Nucleus_003","2023.5","509.4","192.8","36381.4","46124.8","36377.7","46116.7","0.0","0.0000"
+"5","yolo_T35_CompactCellBoundary_001","GT Compact cell boundary","yolo_T35_Nucleus_005","4484.0","433.7","253.7","36305.7","46185.7","36322.0","46182.5","0.0","0.0000"
+"6","yolo_T35_ClearCellBoundary_005","GT Clear cell boundary","yolo_T35_Nucleus_006","3374.9","371.3","502.4","36243.3","46434.4","36251.0","46379.0","0.0","0.0000"

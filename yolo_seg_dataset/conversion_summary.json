@@ -8,16 +8,16 @@
     "2": "compact_cell_boundary",
     "3": "stroma"
   },
-  "tile_count": 34,
+  "tile_count": 35,
   "splits": {
     "train": 28,
-    "val": 6
+    "val": 7
   },
   "class_counts": {
-    "nucleus": 827,
-    "clear_cell_boundary": 617,
-    "stroma": 127,
-    "compact_cell_boundary": 121
+    "nucleus": 833,
+    "clear_cell_boundary": 622,
+    "stroma": 129,
+    "compact_cell_boundary": 122
   },
   "split_class_counts": {
     "train": {
@@ -27,10 +27,10 @@
       "compact_cell_boundary": 112
     },
     "val": {
-      "nucleus": 128,
-      "clear_cell_boundary": 106,
-      "stroma": 27,
-      "compact_cell_boundary": 9
+      "nucleus": 134,
+      "clear_cell_boundary": 111,
+      "stroma": 29,
+      "compact_cell_boundary": 10
     }
   },
   "tiles": [
@@ -458,6 +458,19 @@
       "class_counts": {
         "nucleus": 17,
         "clear_cell_boundary": 17,
+        "stroma": 2
+      }
+    },
+    {
+      "tile_id": "yolo_tile_35",
+      "split": "val",
+      "image": "/Volumes/T9/CGH_PA_annotation_1/training_data/cellseg1_cgh_p2/yolo_seg_dataset/images/val/yolo_tile_35.png",
+      "label": "/Volumes/T9/CGH_PA_annotation_1/training_data/cellseg1_cgh_p2/yolo_seg_dataset/labels/val/yolo_tile_35.txt",
+      "labels": 14,
+      "class_counts": {
+        "nucleus": 6,
+        "clear_cell_boundary": 5,
+        "compact_cell_boundary": 1,
         "stroma": 2
       }
     }

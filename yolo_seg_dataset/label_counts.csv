@@ -33,3 +33,4 @@ yolo_tile_31,train,21,21,0,1,43
 yolo_tile_32,train,24,23,0,3,50
 yolo_tile_33,train,21,20,0,3,44
 yolo_tile_34,train,17,17,0,2,36
+yolo_tile_35,val,6,5,1,2,14

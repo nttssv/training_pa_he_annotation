@@ -33,3 +33,4 @@ tile_id,tile_name,image_file,mask_file,width,height,trainable_instances,clear_tr
 "yolo_tile_32","yolo_tile_32","train/images/yolo_tile_32.png","train/masks/yolo_tile_32.png","512","512","23","23","0","0","16","25","24","3"
 "yolo_tile_33","yolo_tile_33","train/images/yolo_tile_33.png","train/masks/yolo_tile_33.png","512","512","20","20","0","0","21","23","21","3"
 "yolo_tile_34","yolo_tile_34","train/images/yolo_tile_34.png","train/masks/yolo_tile_34.png","512","512","17","17","0","0","21","17","17","2"
+"yolo_tile_35","yolo_tile_35","train/images/yolo_tile_35.png","train/masks/yolo_tile_35.png","512","512","6","5","1","0","15","7","6","2"

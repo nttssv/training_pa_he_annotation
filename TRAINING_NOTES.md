@@ -4,10 +4,10 @@
 
 Source project: `/Volumes/T9/CGH_PA_annotation_1/project.qpproj`
 Source image: `target.tiff`
-Training tiles: 34 final GT tile annotations (`P2 tile 01`-`P2 tile 20` and `yolo_tile_21`-`yolo_tile_34`)
+Training tiles: 35 final GT tile annotations (`P2 tile 01`-`P2 tile 20` and `yolo_tile_21`-`yolo_tile_35`)
 Export path on T9: `/Volumes/T9/CGH_PA_annotation_1/training_data/cellseg1_cgh_p2`
 
-Current export has 34 tiles and 738 trainable cell-boundary instances:
+Current export has 35 tiles and 744 trainable cell-boundary instances:
 
 | Tile | Trainable | Clear | Compact | Edge/invalid ignore | Uncertain ignore | In-tile nuclei | Stroma regions |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -45,13 +45,14 @@ Current export has 34 tiles and 738 trainable cell-boundary instances:
 | yolo_tile_32 | 23 | 23 | 0 | 0 | 16 | 24 | 3 |
 | yolo_tile_33 | 20 | 20 | 0 | 0 | 21 | 21 | 3 |
 | yolo_tile_34 | 17 | 17 | 0 | 0 | 21 | 17 | 2 |
-| Total | 738 | 617 | 121 | 74 | 413 | 828 | - |
+| yolo_tile_35 | 6 | 5 | 1 | 0 | 15 | 6 | 2 |
+| Total | 744 | 622 | 122 | 74 | 428 | 834 | - |
 
 Notes:
 - Positive CellSeg1 masks use only `GT Clear cell boundary` and `GT Compact cell boundary` regions with exactly one in-tile nucleus centroid.
 - `GT Uncertain cell boundary` regions are exported as ignore/review masks, not positive instances.
 - Edge cells with nuclei outside the training ROI are exported as ignore masks.
-- Temporary/duplicate training tile annotations such as `cell_boundary_clean`, `nuclei_clean`, and unnumbered `yolo_tile` are intentionally excluded from the export.
+- Raw helper parents such as `cellseg1_boundary_tile` and `yolo_nuclei_tile` are intentionally excluded from the export.
 
 ## Files
 
@@ -77,7 +78,7 @@ Metadata:
 
 ## Training Direction
 
-Use the 34-tile dataset as the current P2 ground-truth snapshot. It is enough for pipeline iteration and early model comparison, but it is still not enough for a robust final histology model.
+Use the 35-tile dataset as the current P2 ground-truth snapshot. It is enough for pipeline iteration and early model comparison, but it is still not enough for a robust final histology model.
 
 Target annotation order for the eventual model:
 1. Detect nuclei first.
@@ -113,7 +114,7 @@ Dashboard metrics:
 
 ## Recommended Dataset Growth
 
-Current snapshot: 34 annotated training tiles.
+Current snapshot: 35 annotated training tiles.
 For a model we can trust across slides: plan for 50+ tiles across variable tissue density, staining intensity, compact cytoplasm, stroma-rich areas, and edge cases.
 
 Daily workflow:
