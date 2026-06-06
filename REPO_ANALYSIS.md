@@ -8,7 +8,7 @@ Commit analyzed: `1c027c2 add cpu support`.
 
 ## Fit for this project
 
-CellSeg1 is a reasonable pilot choice for the P2 QuPath ground truth because it fine-tunes SAM with LoRA from a small annotated image set. Our current P2 export has 33 training tiles and 721 valid cell-boundary instances, each checked to contain one nucleus inside the training tile.
+CellSeg1 is a reasonable pilot choice for the P2 QuPath ground truth because it fine-tunes SAM with LoRA from a small annotated image set. Our current P2 export has 34 training tiles and 738 valid cell-boundary instances, each checked to contain one nucleus inside the training tile.
 
 This is enough for pipeline iteration and early model comparison, but it is still not enough for a robust final histology model. For a dependable model, add more training tiles covering staining variation, dense cells, stroma-heavy zones, tile edges, and ambiguous/uncertain cases.
 
@@ -23,7 +23,7 @@ Our exported dataset matches this format:
 
 - Images: `train/images/*.png`
 - Masks: `train/masks/*.png`
-- Tiles: 33 exported training tiles
+- Tiles: 34 exported training tiles
 - Labels: contiguous `1..N` per tile
 - Sizes: mostly `512 x 512`; `p2_tile_01` is `513 x 512`, `p2_tile_07` is `512 x 518`, and `yolo_tile_22` is `513 x 512`.
 

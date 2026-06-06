@@ -4,10 +4,10 @@
 
 Source project: `/Volumes/T9/CGH_PA_annotation_1/project.qpproj`
 Source image: `target.tiff`
-Training tiles: 33 final GT tile annotations (`P2 tile 01`-`P2 tile 20` and `yolo_tile_21`-`yolo_tile_33`)
+Training tiles: 34 final GT tile annotations (`P2 tile 01`-`P2 tile 20` and `yolo_tile_21`-`yolo_tile_34`)
 Export path on T9: `/Volumes/T9/CGH_PA_annotation_1/training_data/cellseg1_cgh_p2`
 
-Current export has 33 tiles and 721 trainable cell-boundary instances:
+Current export has 34 tiles and 738 trainable cell-boundary instances:
 
 | Tile | Trainable | Clear | Compact | Edge/invalid ignore | Uncertain ignore | In-tile nuclei | Stroma regions |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -35,16 +35,17 @@ Current export has 33 tiles and 721 trainable cell-boundary instances:
 | yolo_tile_22 | 18 | 9 | 9 | 5 | 3 | 22 | 1 |
 | yolo_tile_23 | 22 | 12 | 10 | 1 | 9 | 25 | 3 |
 | yolo_tile_24 | 23 | 22 | 1 | 1 | 11 | 27 | 3 |
-| yolo_tile_25 | 19 | 17 | 2 | 0 | 13 | 25 | 2 |
+| yolo_tile_25 | 19 | 17 | 2 | 0 | 15 | 25 | 2 |
 | yolo_tile_26 | 16 | 16 | 0 | 3 | 9 | 17 | 1 |
 | yolo_tile_27 | 19 | 19 | 0 | 0 | 12 | 22 | 2 |
 | yolo_tile_28 | 13 | 12 | 1 | 0 | 19 | 20 | 2 |
 | yolo_tile_29 | 15 | 14 | 1 | 3 | 11 | 17 | 4 |
-| yolo_tile_30 | 16 | 16 | 0 | 0 | 10 | 17 | 4 |
-| yolo_tile_31 | 21 | 21 | 0 | 0 | 5 | 21 | 1 |
+| yolo_tile_30 | 16 | 16 | 0 | 0 | 12 | 17 | 4 |
+| yolo_tile_31 | 21 | 21 | 0 | 0 | 6 | 21 | 1 |
 | yolo_tile_32 | 23 | 23 | 0 | 0 | 16 | 24 | 3 |
-| yolo_tile_33 | 20 | 20 | 0 | 0 | 20 | 21 | 3 |
-| Total | 721 | 600 | 121 | 74 | 391 | 811 | - |
+| yolo_tile_33 | 20 | 20 | 0 | 0 | 21 | 21 | 3 |
+| yolo_tile_34 | 17 | 17 | 0 | 0 | 21 | 17 | 2 |
+| Total | 738 | 617 | 121 | 74 | 413 | 828 | - |
 
 Notes:
 - Positive CellSeg1 masks use only `GT Clear cell boundary` and `GT Compact cell boundary` regions with exactly one in-tile nucleus centroid.
@@ -76,7 +77,7 @@ Metadata:
 
 ## Training Direction
 
-Use the 33-tile dataset as the current P2 ground-truth snapshot. It is enough for pipeline iteration and early model comparison, but it is still not enough for a robust final histology model.
+Use the 34-tile dataset as the current P2 ground-truth snapshot. It is enough for pipeline iteration and early model comparison, but it is still not enough for a robust final histology model.
 
 Target annotation order for the eventual model:
 1. Detect nuclei first.
@@ -112,7 +113,7 @@ Dashboard metrics:
 
 ## Recommended Dataset Growth
 
-Current snapshot: 33 annotated training tiles.
+Current snapshot: 34 annotated training tiles.
 For a model we can trust across slides: plan for 50+ tiles across variable tissue density, staining intensity, compact cytoplasm, stroma-rich areas, and edge cases.
 
 Daily workflow:
