@@ -30,4 +30,5 @@ yolo_tile_28,train,19,12,1,2,34
 yolo_tile_29,train,17,14,1,3,35
 yolo_tile_30,val,17,16,0,4,37
 yolo_tile_31,train,21,21,0,1,43
-yolo_tile_32,train,23,23,0,2,48
+yolo_tile_32,train,24,23,0,3,50
+yolo_tile_33,train,21,20,0,3,44

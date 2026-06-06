@@ -34,5 +34,6 @@
 | yolo_tile_30 | 512x512 | 512x512 | 16 | 16 | True |
 | yolo_tile_31 | 512x512 | 512x512 | 21 | 21 | True |
 | yolo_tile_32 | 512x512 | 512x512 | 23 | 23 | True |
+| yolo_tile_33 | 512x512 | 512x512 | 20 | 20 | True |
 
 QC pass criteria: image/mask sizes match, labels are contiguous from 1..N, and instance counts match the export manifest.

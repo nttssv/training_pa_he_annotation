@@ -19,7 +19,7 @@ When QuPath is open, pan to the tissue region you want to annotate and run:
 /Users/nttssv/Desktop/SUTD/Courses/CGH PA/CGH Digital Image/Cellpose_testing/qupath_work/create_next_512_training_tile_from_viewer.groovy
 ```
 
-The script creates the next root-level `GT Training tile` using the current hierarchy. For the current snapshot, the next tile after `yolo_tile_32` should be `yolo_tile_33` with object prefix `yolo_T33`.
+The script creates the next root-level `GT Training tile` using the current hierarchy. For the current snapshot, the next tile after `yolo_tile_33` should be `yolo_tile_34` with object prefix `yolo_T34`.
 
 Placement:
 
@@ -30,7 +30,7 @@ Placement:
 Expected created hierarchy:
 
 ```text
-yolo_tile_33
+yolo_tile_34
 ├── nuclei_clean
 └── cell_boundary_clean
 ```
@@ -67,8 +67,8 @@ Please proceed carefully and preserve all existing annotations from previous til
 Examples:
 
 ```text
-Tile parent name: yolo_tile_33
-Object prefix: yolo_T33
+Tile parent name: yolo_tile_34
+Object prefix: yolo_T34
 ```
 
 ```text
@@ -228,7 +228,7 @@ cd "/Volumes/T9/CGH_PA_annotation_1/training_data/cellseg1_cgh_p2"
 python3 validate_training_export.py --expected-tiles [EXPECTED_TILE_COUNT]
 ```
 
-Current snapshot: `32` tiles. If `[TILE_NAME]` is a new final training tile, increment the expected count after export.
+Current snapshot: `33` tiles. If `[TILE_NAME]` is a new final training tile, increment the expected count after export.
 
 Clean or ignore before commit:
 

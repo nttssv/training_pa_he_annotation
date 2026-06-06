@@ -20,5 +20,5 @@ instance_label,boundary_name,boundary_class,nucleus_name,boundary_area_px,local_
 "19","yolo_T32_ClearCellBoundary_019","GT Clear cell boundary","yolo_T32_Nucleus_018","2686.9","16.9","376.2","34864.9","45796.2","34882.0","45790.8","0.0","0.0000"
 "20","yolo_T32_ClearCellBoundary_020","GT Clear cell boundary","yolo_T32_Nucleus_020","8165.5","168.9","397.0","35016.9","45817.0","34972.0","45850.9","0.0","0.0000"
 "21","yolo_T32_ClearCellBoundary_021","GT Clear cell boundary","yolo_T32_Nucleus_021","2743.8","21.9","438.8","34869.9","45858.8","34880.0","45868.4","0.0","0.0000"
-"22","yolo_T32_ClearCellBoundary_022","GT Clear cell boundary","yolo_T32_Nucleus_023","8141.9","474.8","466.0","35322.8","45886.0","35333.3","45918.7","0.0","0.0000"
+"22","yolo_T32_ClearCellBoundary_022","GT Clear cell boundary","yolo_T32_Nucleus_023","8141.9","474.8","466.0","35322.8","45886.0","35333.3","45918.7","3.0","0.0004"
 "23","yolo_T32_ClearCellBoundary_023","GT Clear cell boundary","yolo_T32_Nucleus_022","4989.0","169.0","475.9","35017.0","45895.9","35045.5","45898.5","0.0","0.0000"

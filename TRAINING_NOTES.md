@@ -4,10 +4,10 @@
 
 Source project: `/Volumes/T9/CGH_PA_annotation_1/project.qpproj`
 Source image: `target.tiff`
-Training tiles: 32 final GT tile annotations (`P2 tile 01`-`P2 tile 20` and `yolo_tile_21`-`yolo_tile_32`)
+Training tiles: 33 final GT tile annotations (`P2 tile 01`-`P2 tile 20` and `yolo_tile_21`-`yolo_tile_33`)
 Export path on T9: `/Volumes/T9/CGH_PA_annotation_1/training_data/cellseg1_cgh_p2`
 
-Current export has 32 tiles and 701 trainable cell-boundary instances:
+Current export has 33 tiles and 721 trainable cell-boundary instances:
 
 | Tile | Trainable | Clear | Compact | Edge/invalid ignore | Uncertain ignore | In-tile nuclei | Stroma regions |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -42,8 +42,9 @@ Current export has 32 tiles and 701 trainable cell-boundary instances:
 | yolo_tile_29 | 15 | 14 | 1 | 3 | 11 | 17 | 4 |
 | yolo_tile_30 | 16 | 16 | 0 | 0 | 10 | 17 | 4 |
 | yolo_tile_31 | 21 | 21 | 0 | 0 | 5 | 21 | 1 |
-| yolo_tile_32 | 23 | 23 | 0 | 0 | 15 | 23 | 2 |
-| Total | 701 | 580 | 121 | 74 | 367 | 789 | - |
+| yolo_tile_32 | 23 | 23 | 0 | 0 | 16 | 24 | 3 |
+| yolo_tile_33 | 20 | 20 | 0 | 0 | 20 | 21 | 3 |
+| Total | 721 | 600 | 121 | 74 | 391 | 811 | - |
 
 Notes:
 - Positive CellSeg1 masks use only `GT Clear cell boundary` and `GT Compact cell boundary` regions with exactly one in-tile nucleus centroid.
@@ -75,7 +76,7 @@ Metadata:
 
 ## Training Direction
 
-Use the 32-tile dataset as the current P2 ground-truth snapshot. It is enough for pipeline iteration and early model comparison, but it is still not enough for a robust final histology model.
+Use the 33-tile dataset as the current P2 ground-truth snapshot. It is enough for pipeline iteration and early model comparison, but it is still not enough for a robust final histology model.
 
 Target annotation order for the eventual model:
 1. Detect nuclei first.
@@ -111,7 +112,7 @@ Dashboard metrics:
 
 ## Recommended Dataset Growth
 
-Current snapshot: 32 annotated training tiles.
+Current snapshot: 33 annotated training tiles.
 For a model we can trust across slides: plan for 50+ tiles across variable tissue density, staining intensity, compact cytoplasm, stroma-rich areas, and edge cases.
 
 Daily workflow:
