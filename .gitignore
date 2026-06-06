@@ -1,0 +1,36 @@
+# macOS metadata
+.DS_Store
+._*
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.backup
+*~
+
+# Python/cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Training outputs and model artifacts
+yolo_runs/
+runs/
+wandb/
+*.pt
+*.pth
+*.onnx
+*.engine
+*.mlmodel
+
+# Derived/regenerable datasets
+yolo_seg_dataset_cv_oversampled/
+
+# Local environments
+.venv/
+venv/
+env/
+

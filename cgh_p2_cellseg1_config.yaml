@@ -1,0 +1,90 @@
+# CellSeg1 config for CGH PA P2 ground-truth tiles 01-02 exported from QuPath.
+# Edit model_path after downloading the SAM ViT-H checkpoint.
+
+# env
+deterministic: true
+allow_tf32_on_matmul: true
+allow_tf32_on_cudnn: true
+seed: 0
+
+# path
+vit_name: vit_h
+model_path: /ABSOLUTE/PATH/TO/sam_vit_h_4b8939.pth
+data_dir: /Volumes/T9/CGH_PA_annotation_1/training_data/cellseg1_cgh_p2
+result_pth_path: /Volumes/T9/CGH_PA_annotation_1/training_runs/cellseg1_cgh_p2/sam_lora_cgh_p2_tiles01_02.pth
+train_image_dir: /Volumes/T9/CGH_PA_annotation_1/training_data/cellseg1_cgh_p2/train/images
+train_mask_dir: /Volumes/T9/CGH_PA_annotation_1/training_data/cellseg1_cgh_p2/train/masks
+
+# data
+resize_size: [512, 512]
+patch_size: 0
+sam_image_size: 512
+train_id: [0, 1]
+duplicate_data: 64
+
+# train
+epoch_max: 300
+batch_size: 1
+gradient_accumulation_step: 32
+base_lr: 3.0e-3
+onecycle_lr_pct_start: 0.3
+num_workers: 0
+
+# net
+image_encoder_lora_rank: 4
+mask_decoder_lora_rank: 4
+freeze_image_encoder: true
+freeze_prompt_encoder: true
+freeze_mask_decoder_transformer: true
+freeze_upscaling_cnn: true
+freeze_output_hypernetworks_mlps: true
+freeze_mask_decoder_mask_tokens: true
+freeze_mask_decoder_iou: true
+lora_dropout: 0.1
+
+# random sample point
+pos_rate: 1.0
+# Keep this at 0.0 for now: CellSeg1 does not natively honor ignore masks.
+# Uncertain and edge-cell regions are exported separately for later sampler patching.
+neg_rate: 0.0
+max_point_num: 30
+edge_distance: 20
+neg_area_ratio_threshold: 5
+neg_area_threshold: 1000
+min_cell_area: 100
+foreground_sample_area_ratio: 0.2
+background_sample_area_ratio: 0.2
+foreground_equal_prob: true
+background_equal_prob: true
+
+# data augment
+data_augmentation: true
+bright_limit: 0.1
+contrast_limit: 0.1
+bright_prob: 0.5
+flip_prob: 0.75
+rotate_prob: 0.8
+scale_limit: [-0.5, 0.5]
+crop_prob: 0.5
+crop_scale: [0.3, 1.0]
+crop_ratio: [0.75, 1.3333]
+
+# loss
+ce_loss_weight: 1.0
+punish_background_point: false
+
+# predict
+crop_n_layers: 1
+crop_n_points_downscale_factor: 1
+points_per_side: 32
+points_per_batch: 64
+max_mask_region_area_ratio: 0.1
+min_mask_region_area: 20
+box_nms_thresh: 0.05
+crop_nms_thresh: 0.05
+pred_iou_thresh: 0.8
+stability_score_thresh: 0.6
+stability_score_offset: 0.8
+
+# log
+track_gpu_memory: false
