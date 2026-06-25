@@ -21,6 +21,7 @@ import json
 import shutil
 from collections import Counter, defaultdict
 from pathlib import Path
+from types import SimpleNamespace
 
 import cv2
 import numpy as np
@@ -67,8 +68,28 @@ def choose_split(tile_ids: list[str], val_every: int) -> dict[str, str]:
     return split
 
 
+def _find_instance_csv(source_dir: Path, tile_id: str) -> Path | None:
+    candidates = [
+        source_dir / "per_tile_instances" / f"{tile_id}_instances.csv",
+        source_dir / f"{tile_id}_instances.csv",
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return None
+
+
 def load_instance_class_map(source_dir: Path, tile_id: str) -> dict[int, int]:
-    rows = read_csv_rows(source_dir / f"{tile_id}_instances.csv")
+    instance_csv = _find_instance_csv(source_dir, tile_id)
+    if instance_csv is not None:
+        rows = read_csv_rows(instance_csv)
+    else:
+        all_instances = source_dir / "cell_instances.csv"
+        if not all_instances.exists():
+            raise FileNotFoundError(
+                f"Missing instance metadata for {tile_id}: expected per_tile_instances/{tile_id}_instances.csv or cell_instances.csv"
+            )
+        rows = [row for row in read_csv_rows(all_instances) if row.get("tile_id") == tile_id]
     mapping: dict[int, int] = {}
     for row in rows:
         instance_label = int(row["instance_label"])
@@ -118,6 +139,8 @@ def instance_mask_to_yolo_lines(
     mask = np.array(Image.open(mask_path))
     lines: list[str] = []
     for label in sorted(int(value) for value in np.unique(mask) if int(value) != 0):
+        if label not in instance_to_class:
+            continue
         class_id = instance_to_class[label]
         lines.extend(
             contours_to_yolo_lines(
@@ -300,6 +323,20 @@ def convert_dataset(args: argparse.Namespace) -> dict:
             )
 
     return summary
+
+
+def default_args(source: Path, output: Path, val_every: int = 5) -> argparse.Namespace:
+    return SimpleNamespace(
+        source=source,
+        output=output,
+        val_every=val_every,
+        min_nucleus_area=12.0,
+        min_boundary_area=24.0,
+        min_stroma_area=64.0,
+        nucleus_epsilon=0.6,
+        boundary_epsilon=1.2,
+        stroma_epsilon=1.5,
+    )
 
 
 def main() -> None:

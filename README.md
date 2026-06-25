@@ -88,6 +88,10 @@ bash training/scripts/run_sutd_inference.sh
 The full training script runs the smoke test first and stops if smoke fails.
 PyTorch should be installed separately with the CUDA build appropriate for the
 assigned SUTD node; `requirements.txt` intentionally does not pin torch.
+If `CGH_YOLO_DATA_YAML` is not set and the legacy
+`training_data/dataset/yolo_seg_dataset/data.yaml` is absent, the YOLO nuclei
+stage automatically converts `CGH_DATASET_ROOT` into a run-local YOLO-seg
+dataset under the current output run folder.
 
 You can also let the helper script clone/update the data branch:
 

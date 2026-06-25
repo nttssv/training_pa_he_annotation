@@ -41,6 +41,8 @@ models:
     type: yolo-seg
     base_model: ${CGH_YOLO_BASE_MODEL:-yolov8s-seg.pt}
     data_yaml: ${CGH_YOLO_DATA_YAML:-training_data/dataset/yolo_seg_dataset/data.yaml}
+    auto_convert: ${CGH_YOLO_AUTO_CONVERT:-true}
+    converted_dataset_dir: ${CGH_YOLO_OUTPUT_DIR:-}
     epochs: ${CGH_YOLO_EPOCHS:-120}
     smoke_epochs: 1
     batch_size: ${CGH_YOLO_BATCH:-8}

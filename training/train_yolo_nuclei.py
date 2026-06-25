@@ -24,12 +24,39 @@ def _require_ultralytics() -> None:
         ) from exc
 
 
+def _as_bool(value: Any, default: bool = False) -> bool:
+    if value is None:
+        return default
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _prepare_data_yaml(cfg: dict[str, Any], dirs: dict[str, Path], yolo_cfg: dict[str, Any]) -> Path:
+    configured = str(yolo_cfg.get("data_yaml", "")).strip()
+    if configured:
+        data_yaml = resolve_path(cfg, configured)
+        if data_yaml.exists():
+            return data_yaml
+        if not _as_bool(yolo_cfg.get("auto_convert"), default=True):
+            raise PipelineError("path", f"YOLO data.yaml not found: {data_yaml}")
+
+    output_dir_value = str(yolo_cfg.get("converted_dataset_dir", "")).strip()
+    output_dir = resolve_path(cfg, output_dir_value) if output_dir_value else dirs["run"] / "yolo_seg_dataset"
+    source_dir = resolve_path(cfg, cfg.get("paths", {}).get("dataset_root", ""))
+    val_every = int(cfg.get("split", {}).get("val_every") or 5)
+    print(f"YOLO data.yaml not found; converting CellSeg1 dataset to YOLO format at {output_dir}")
+    from training.convert_cellseg1_cgh_p2_to_yolo import convert_dataset, default_args
+
+    summary = convert_dataset(default_args(source=source_dir, output=output_dir, val_every=val_every))
+    write_json(dirs["metrics"] / "yolo_conversion_summary.json", summary)
+    return Path(summary["data_yaml"])
+
+
 def train(cfg: dict[str, Any], dirs: dict[str, Path], smoke: bool = False) -> dict[str, Any]:
     _require_ultralytics()
     yolo_cfg = cfg.get("models", {}).get("nuclei", {})
-    data_yaml = resolve_path(cfg, yolo_cfg.get("data_yaml", "training_data/dataset/yolo_seg_dataset/data.yaml"))
-    if not data_yaml.exists():
-        raise PipelineError("path", f"YOLO data.yaml not found: {data_yaml}")
+    data_yaml = _prepare_data_yaml(cfg, dirs, yolo_cfg)
     epochs = int(yolo_cfg.get("smoke_epochs" if smoke else "epochs", 1 if smoke else 100))
     imgsz = int(yolo_cfg.get("imgsz", 512))
     batch = int(yolo_cfg.get("smoke_batch_size" if smoke else "batch_size", 2 if smoke else 8))
