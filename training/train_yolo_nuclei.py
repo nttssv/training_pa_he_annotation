@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 import shutil
 import subprocess
-import sys
 from pathlib import Path
 from typing import Any
 
@@ -22,6 +21,17 @@ def _require_ultralytics() -> None:
             "dependency",
             "Ultralytics is required for YOLO nuclei training. Install with: python -m pip install ultralytics",
         ) from exc
+
+
+def _ultralytics_cli() -> list[str]:
+    for executable in ("yolo", "ultralytics"):
+        path = shutil.which(executable)
+        if path:
+            return [path]
+    raise PipelineError(
+        "dependency",
+        'Ultralytics is installed, but the CLI command was not found. Run: export PATH="$HOME/.local/bin:$PATH"',
+    )
 
 
 def _as_bool(value: Any, default: bool = False) -> bool:
@@ -69,9 +79,7 @@ def train(cfg: dict[str, Any], dirs: dict[str, Path], smoke: bool = False) -> di
     project = dirs["run"] / "yolo_runs"
 
     cmd = [
-        sys.executable,
-        "-m",
-        "ultralytics",
+        *_ultralytics_cli(),
         "segment",
         "train",
         f"model={model}",
