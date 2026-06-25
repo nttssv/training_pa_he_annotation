@@ -28,6 +28,11 @@ if command -v conda >/dev/null 2>&1 && [[ -n "${CGH_CONDA_ENV:-}" ]]; then
   conda activate "$CGH_CONDA_ENV"
 fi
 
-python -m pip install -r requirements.txt
-bash training/scripts/run_sutd_smoke_test.sh
+export PATH="$HOME/.local/bin:$PATH"
+if [[ "${CGH_SKIP_PIP_INSTALL:-0}" != "1" ]]; then
+  python -m pip install --user -r requirements.txt
+else
+  echo "Skipping pip install because CGH_SKIP_PIP_INSTALL=1"
+fi
+CGH_SKIP_PIP_INSTALL=1 bash training/scripts/run_sutd_smoke_test.sh
 python training/run_pipeline.py --config training/configs/sutd.yaml --stage all --visualize 2>&1 | tee "sutd_full_training.log"
