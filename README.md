@@ -47,7 +47,7 @@ device settings are read from YAML:
 For SUTD, set paths through environment variables instead of editing code:
 
 ```bash
-export CGH_DATASET_ROOT=/path/to/cellseg1_cgh_p2_combined_batch
+export CGH_DATASET_ROOT=/path/to/cellseg1_cgh_p2_combined_41_full
 export CGH_OUTPUT_ROOT=/path/to/outputs/runs
 export CELLSEG1_REPO=/path/to/cellseg1
 export CELLSEG1_SAM_CHECKPOINT=/path/to/sam_vit_h_4b8939.pth
@@ -63,26 +63,45 @@ git clone --branch codex/adrenal-morphology-training-pipeline --single-branch ht
 cd training_pa_he_annotation
 ```
 
-Clone the data branch separately. This is the source for
-`cellseg1_cgh_p2_combined_batch/`:
+Clone the data branch separately. For CellSeg1/SAM boundary training, use the
+full 41-tile dataset folder `cellseg1_cgh_p2_combined_41_full/`:
 
 ```bash
 mkdir -p ~/Desktop/1.Data
 cd ~/Desktop/1.Data
-git clone --branch codex/add-second-batch-training-data --single-branch ssh://git@ssh.github.com:443/nttssv/training_pa_he_annotation.git
-cd training_pa_he_annotation/cellseg1_cgh_p2_combined_batch
+git clone --branch codex/add-second-batch-training-data --single-branch https://github.com/nttssv/training_pa_he_annotation.git training_pa_he_annotation_full
+cd training_pa_he_annotation_full/cellseg1_cgh_p2_combined_41_full
+find train/images -type f | wc -l
+find train/masks -type f | wc -l
 ```
 
 Then return to the training-code clone and run:
 
 ```bash
 cd ~/Desktop/2.Train2_25_Jun/training_pa_he_annotation
-export CGH_DATASET_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation/cellseg1_cgh_p2_combined_batch"
-export CGH_OUTPUT_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation/outputs/runs"
+export CGH_DATASET_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation_full/cellseg1_cgh_p2_combined_41_full"
+export CGH_OUTPUT_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation_full/outputs/runs"
 
 bash training/scripts/run_sutd_smoke_test.sh
 bash training/scripts/run_sutd_training.sh
 bash training/scripts/run_sutd_inference.sh
+```
+
+If YOLO nuclei training is already complete and you only need to continue with
+CellSeg1/SAM boundary training, open and run:
+
+```bash
+cd ~/Desktop/2.Train2_25_Jun/training_pa_he_annotation
+export CGH_DATASET_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation_full/cellseg1_cgh_p2_combined_41_full"
+export CGH_OUTPUT_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation_full/outputs"
+jupyter lab training/cellseg1_cluster_live_training.ipynb
+```
+
+That notebook defaults to:
+
+```text
+~/Desktop/1.Data/training_pa_he_annotation_full/cellseg1_cgh_p2_combined_41_full/train/images
+~/Desktop/1.Data/training_pa_he_annotation_full/cellseg1_cgh_p2_combined_41_full/train/masks
 ```
 
 The full training script runs the smoke test first and stops if smoke fails.

@@ -3,8 +3,8 @@ set -euo pipefail
 
 cd "$(dirname "$0")/../.."
 
-DEFAULT_DATASET_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation/cellseg1_cgh_p2_combined_batch"
-DEFAULT_OUTPUT_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation/outputs/runs"
+DEFAULT_DATASET_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation_full/cellseg1_cgh_p2_combined_41_full"
+DEFAULT_OUTPUT_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation_full/outputs/runs"
 
 if [[ -z "${CGH_DATASET_ROOT:-}" && -d "$DEFAULT_DATASET_ROOT" ]]; then
   export CGH_DATASET_ROOT="$DEFAULT_DATASET_ROOT"
@@ -18,7 +18,7 @@ if [[ -z "${CGH_DATASET_ROOT:-}" || ! -d "$CGH_DATASET_ROOT" ]]; then
   echo "Clone the data branch first:" >&2
   echo "  bash training/scripts/setup_sutd_data.sh" >&2
   echo "Or manually:" >&2
-  echo "  git clone --branch codex/add-second-batch-training-data --single-branch ssh://git@ssh.github.com:443/nttssv/training_pa_he_annotation.git ~/Desktop/1.Data/training_pa_he_annotation" >&2
+  echo "  git clone --branch codex/add-second-batch-training-data --single-branch https://github.com/nttssv/training_pa_he_annotation.git ~/Desktop/1.Data/training_pa_he_annotation_full" >&2
   echo "  export CGH_DATASET_ROOT=\"$DEFAULT_DATASET_ROOT\"" >&2
   exit 2
 fi

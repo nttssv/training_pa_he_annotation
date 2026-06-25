@@ -1,18 +1,18 @@
 # CellSeg1 Cluster Training Package
 
-This package trains a CellSeg1/SAM LoRA model on the CGH PA P2 cell-boundary
-instance masks copied from the T9 YOLO training export.
+This package trains a CellSeg1/SAM LoRA model on the CGH PA P2 full 41-tile
+cell-boundary instance dataset.
 
 ## Included Assets
 
-- Portable CellSeg1 instance dataset:
-  `training_data/dataset/cellseg1_instance_train`
+- External CellSeg1/SAM training dataset:
+  `~/Desktop/1.Data/training_pa_he_annotation_full/cellseg1_cgh_p2_combined_41_full`
 - Primary training images:
-  `training_data/dataset/cellseg1_instance_train/images`
+  `cellseg1_cgh_p2_combined_41_full/train/images`
 - Primary instance masks:
-  `training_data/dataset/cellseg1_instance_train/masks`
+  `cellseg1_cgh_p2_combined_41_full/train/masks`
 - Dataset metadata and QC summary:
-  `training_data/dataset/cellseg1_instance_train/dataset_summary.json`
+  `cellseg1_cgh_p2_combined_41_full/dataset_manifest.csv`
 - Live training notebook:
   `training/cellseg1_cluster_live_training.ipynb`
 - Python training wrapper:
@@ -20,11 +20,9 @@ instance masks copied from the T9 YOLO training export.
 
 ## Dataset Snapshot
 
-- 31 tiles
-- 678 trainable cell-boundary instances
-- 557 clear-cell boundary instances
-- 121 compact-cell boundary instances
-- 766 in-tile nuclei preserved in metadata/auxiliary masks
+- 41 image/mask pairs under `train/images` and `train/masks`
+- Cell-boundary instance masks are used as one positive CellSeg1 class
+- Clear/compact metadata is preserved in the dataset manifest when present
 
 CellSeg1 treats clear and compact boundaries as one positive instance class.
 Class-specific clear/compact classification still needs a separate classifier
@@ -45,8 +43,8 @@ training/cellseg1_cluster_live_training.ipynb
 
 Run cells from top to bottom. The notebook will:
 
-1. locate the portable dataset, or rebuild a clean runtime copy from T9 if T9
-   is mounted;
+1. locate the full 41-tile dataset at
+   `~/Desktop/1.Data/training_pa_he_annotation_full/cellseg1_cgh_p2_combined_41_full`;
 2. clone `https://github.com/Nuisal/cellseg1.git` into
    `outputs/cellseg1_cluster_live/cellseg1_repo` if needed;
 3. optionally install CellSeg1 requirements when
@@ -67,6 +65,8 @@ and Streamlit dependencies but not the cluster-specific PyTorch build.
 ## Useful Environment Overrides
 
 ```bash
+export CGH_DATASET_ROOT=~/Desktop/1.Data/training_pa_he_annotation_full/cellseg1_cgh_p2_combined_41_full
+export CGH_OUTPUT_ROOT=~/Desktop/1.Data/training_pa_he_annotation_full/outputs
 export CELLSEG1_EPOCHS=120
 export CELLSEG1_BATCH=1
 export CELLSEG1_GRAD_ACCUM=32
@@ -80,11 +80,11 @@ export CELLSEG1_LOG_TAIL_LINES=80
 The default output root is:
 
 ```text
-outputs/cellseg1_cluster_live/
+~/Desktop/1.Data/training_pa_he_annotation_full/outputs/cellseg1_cluster_live/
 ```
 
 The trained LoRA checkpoint is copied to:
 
 ```text
-training_data/reference_models/cellseg1_cgh_p2_cell_boundary_lora.pth
+~/Desktop/1.Data/training_pa_he_annotation_full/outputs/reference_models/cellseg1_cgh_p2_cell_boundary_lora.pth
 ```

@@ -3,8 +3,8 @@ set -euo pipefail
 
 cd "$(dirname "$0")/../.."
 
-DEFAULT_DATASET_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation/cellseg1_cgh_p2_combined_batch"
-DEFAULT_OUTPUT_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation/outputs/runs"
+DEFAULT_DATASET_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation_full/cellseg1_cgh_p2_combined_41_full"
+DEFAULT_OUTPUT_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation_full/outputs/runs"
 
 if [[ -z "${CGH_DATASET_ROOT:-}" && -d "$DEFAULT_DATASET_ROOT" ]]; then
   export CGH_DATASET_ROOT="$DEFAULT_DATASET_ROOT"

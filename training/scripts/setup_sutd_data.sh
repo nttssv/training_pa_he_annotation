@@ -2,9 +2,9 @@
 set -euo pipefail
 
 DATA_PARENT="${CGH_DATA_PARENT:-$HOME/Desktop/1.Data}"
-DATA_REPO_DIR="$DATA_PARENT/training_pa_he_annotation"
-DATASET_DIR="$DATA_REPO_DIR/cellseg1_cgh_p2_combined_batch"
-DATA_REPO_URL="${CGH_DATA_REPO_URL:-ssh://git@ssh.github.com:443/nttssv/training_pa_he_annotation.git}"
+DATA_REPO_DIR="$DATA_PARENT/training_pa_he_annotation_full"
+DATASET_DIR="$DATA_REPO_DIR/cellseg1_cgh_p2_combined_41_full"
+DATA_REPO_URL="${CGH_DATA_REPO_URL:-https://github.com/nttssv/training_pa_he_annotation.git}"
 DATA_BRANCH="${CGH_DATA_BRANCH:-codex/add-second-batch-training-data}"
 
 mkdir -p "$DATA_PARENT"
@@ -21,13 +21,17 @@ fi
 
 if [[ ! -d "$DATASET_DIR" ]]; then
   echo "ERROR: Expected dataset folder not found: $DATASET_DIR" >&2
-  echo "Check that branch '$DATA_BRANCH' contains cellseg1_cgh_p2_combined_batch/." >&2
+  echo "Check that branch '$DATA_BRANCH' contains cellseg1_cgh_p2_combined_41_full/." >&2
   exit 2
 fi
+
+echo "Dataset image count:"
+find "$DATASET_DIR/train/images" -type f | wc -l
+echo "Dataset mask count:"
+find "$DATASET_DIR/train/masks" -type f | wc -l
 
 echo
 echo "Data ready."
 echo "Run these before training:"
 echo "export CGH_DATASET_ROOT=\"$DATASET_DIR\""
 echo "export CGH_OUTPUT_ROOT=\"$DATA_REPO_DIR/outputs/runs\""
-
