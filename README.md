@@ -55,9 +55,31 @@ export CELLSEG1_SAM_CHECKPOINT=/path/to/sam_vit_h_4b8939.pth
 
 ## Local-To-SUTD Workflow
 
-Commit the code, pull it on the SUTD GPU server, then run:
+Clone the lightweight training-code branch on the SUTD GPU server:
 
 ```bash
+cd ~/Desktop/2.Train2_25_Jun
+git clone --branch codex/adrenal-morphology-training-pipeline --single-branch https://github.com/nttssv/training_pa_he_annotation.git
+cd training_pa_he_annotation
+```
+
+Clone the data branch separately. This is the source for
+`cellseg1_cgh_p2_combined_batch/`:
+
+```bash
+mkdir -p ~/Desktop/1.Data
+cd ~/Desktop/1.Data
+git clone --branch codex/add-second-batch-training-data --single-branch ssh://git@ssh.github.com:443/nttssv/training_pa_he_annotation.git
+cd training_pa_he_annotation/cellseg1_cgh_p2_combined_batch
+```
+
+Then return to the training-code clone and run:
+
+```bash
+cd ~/Desktop/2.Train2_25_Jun/training_pa_he_annotation
+export CGH_DATASET_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation/cellseg1_cgh_p2_combined_batch"
+export CGH_OUTPUT_ROOT="$HOME/Desktop/1.Data/training_pa_he_annotation/outputs/runs"
+
 bash training/scripts/run_sutd_smoke_test.sh
 bash training/scripts/run_sutd_training.sh
 bash training/scripts/run_sutd_inference.sh
@@ -66,6 +88,12 @@ bash training/scripts/run_sutd_inference.sh
 The full training script runs the smoke test first and stops if smoke fails.
 PyTorch should be installed separately with the CUDA build appropriate for the
 assigned SUTD node; `requirements.txt` intentionally does not pin torch.
+
+You can also let the helper script clone/update the data branch:
+
+```bash
+bash training/scripts/setup_sutd_data.sh
+```
 
 ## Smoke Test
 
