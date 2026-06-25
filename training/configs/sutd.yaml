@@ -48,7 +48,7 @@ models:
     batch_size: ${CGH_YOLO_BATCH:-8}
     smoke_batch_size: 2
     imgsz: ${CGH_IMGSZ:-512}
-    workers: ${CGH_WORKERS:-4}
+    workers: ${CGH_WORKERS:-0}
     learning_rate: ${CGH_YOLO_LR:-0.002}
   boundary:
     type: cellseg1-sam-lora

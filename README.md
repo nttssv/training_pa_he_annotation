@@ -92,6 +92,9 @@ If `CGH_YOLO_DATA_YAML` is not set and the legacy
 `training_data/dataset/yolo_seg_dataset/data.yaml` is absent, the YOLO nuclei
 stage automatically converts `CGH_DATASET_ROOT` into a run-local YOLO-seg
 dataset under the current output run folder.
+The SUTD config defaults YOLO dataloader workers to `0` because Jupyter GPU
+containers often have small `/dev/shm`; using multiple workers can trigger
+PyTorch bus errors even when disk and GPU memory are sufficient.
 
 You can also let the helper script clone/update the data branch:
 
