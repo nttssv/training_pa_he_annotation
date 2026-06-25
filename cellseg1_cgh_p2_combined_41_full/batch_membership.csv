@@ -1,0 +1,42 @@
+tile_id,tile_name,source_batch,source_image_file,source_mask_file
+human_compact_tile_001,Human compact tile 001,batch2,cellseg1_cgh_p2_second_batch/train/images/human_compact_tile_001.png,cellseg1_cgh_p2_second_batch/train/masks/human_compact_tile_001.png
+human_compact_tile_002,Human compact tile 002,batch2,cellseg1_cgh_p2_second_batch/train/images/human_compact_tile_002.png,cellseg1_cgh_p2_second_batch/train/masks/human_compact_tile_002.png
+human_compact_tile_003,Human compact tile 003,batch2,cellseg1_cgh_p2_second_batch/train/images/human_compact_tile_003.png,cellseg1_cgh_p2_second_batch/train/masks/human_compact_tile_003.png
+human_compact_tile_004,Human compact tile 004,batch2,cellseg1_cgh_p2_second_batch/train/images/human_compact_tile_004.png,cellseg1_cgh_p2_second_batch/train/masks/human_compact_tile_004.png
+human_compact_tile_005,Human compact tile 005,batch2,cellseg1_cgh_p2_second_batch/train/images/human_compact_tile_005.png,cellseg1_cgh_p2_second_batch/train/masks/human_compact_tile_005.png
+human_compact_tile_006,Human compact tile 006,batch2,cellseg1_cgh_p2_second_batch/train/images/human_compact_tile_006.png,cellseg1_cgh_p2_second_batch/train/masks/human_compact_tile_006.png
+p2_tile_01,P2 tile 01,batch1,train/images/p2_tile_01.png,train/masks/p2_tile_01.png
+p2_tile_02,P2 tile 02,batch1,train/images/p2_tile_02.png,train/masks/p2_tile_02.png
+p2_tile_03,P2 tile 03,batch1,train/images/p2_tile_03.png,train/masks/p2_tile_03.png
+p2_tile_04,P2 tile 04,batch1,train/images/p2_tile_04.png,train/masks/p2_tile_04.png
+p2_tile_05,P2 tile 05,batch1,train/images/p2_tile_05.png,train/masks/p2_tile_05.png
+p2_tile_06,P2 tile 06,batch1,train/images/p2_tile_06.png,train/masks/p2_tile_06.png
+p2_tile_07,P2 tile 07,batch1,train/images/p2_tile_07.png,train/masks/p2_tile_07.png
+p2_tile_08,P2 tile 08,batch1,train/images/p2_tile_08.png,train/masks/p2_tile_08.png
+p2_tile_09,P2 tile 09,batch1,train/images/p2_tile_09.png,train/masks/p2_tile_09.png
+p2_tile_10,P2 tile 10,batch1,train/images/p2_tile_10.png,train/masks/p2_tile_10.png
+p2_tile_11,P2 tile 11,batch1,train/images/p2_tile_11.png,train/masks/p2_tile_11.png
+p2_tile_12,P2 tile 12,batch1,train/images/p2_tile_12.png,train/masks/p2_tile_12.png
+p2_tile_13,P2 tile 13,batch1,train/images/p2_tile_13.png,train/masks/p2_tile_13.png
+p2_tile_14,P2 tile 14,batch1,train/images/p2_tile_14.png,train/masks/p2_tile_14.png
+p2_tile_15,P2 tile 15,batch1,train/images/p2_tile_15.png,train/masks/p2_tile_15.png
+p2_tile_16,P2 tile 16,batch1,train/images/p2_tile_16.png,train/masks/p2_tile_16.png
+p2_tile_17,P2 tile 17,batch1,train/images/p2_tile_17.png,train/masks/p2_tile_17.png
+p2_tile_18,P2 tile 18,batch1,train/images/p2_tile_18.png,train/masks/p2_tile_18.png
+p2_tile_19,P2 tile 19,batch1,train/images/p2_tile_19.png,train/masks/p2_tile_19.png
+p2_tile_20,P2 tile 20,batch1,train/images/p2_tile_20.png,train/masks/p2_tile_20.png
+yolo_tile_21,yolo_tile_21,batch1,train/images/yolo_tile_21.png,train/masks/yolo_tile_21.png
+yolo_tile_22,yolo_tile_22,batch1,train/images/yolo_tile_22.png,train/masks/yolo_tile_22.png
+yolo_tile_23,yolo_tile_23,batch1,train/images/yolo_tile_23.png,train/masks/yolo_tile_23.png
+yolo_tile_24,yolo_tile_24,batch1,train/images/yolo_tile_24.png,train/masks/yolo_tile_24.png
+yolo_tile_25,yolo_tile_25,batch1,train/images/yolo_tile_25.png,train/masks/yolo_tile_25.png
+yolo_tile_26,yolo_tile_26,batch1,train/images/yolo_tile_26.png,train/masks/yolo_tile_26.png
+yolo_tile_27,yolo_tile_27,batch1,train/images/yolo_tile_27.png,train/masks/yolo_tile_27.png
+yolo_tile_28,yolo_tile_28,batch1,train/images/yolo_tile_28.png,train/masks/yolo_tile_28.png
+yolo_tile_29,yolo_tile_29,batch1,train/images/yolo_tile_29.png,train/masks/yolo_tile_29.png
+yolo_tile_30,yolo_tile_30,batch1,train/images/yolo_tile_30.png,train/masks/yolo_tile_30.png
+yolo_tile_31,yolo_tile_31,batch1,train/images/yolo_tile_31.png,train/masks/yolo_tile_31.png
+yolo_tile_32,yolo_tile_32,batch1,train/images/yolo_tile_32.png,train/masks/yolo_tile_32.png
+yolo_tile_33,yolo_tile_33,batch1,train/images/yolo_tile_33.png,train/masks/yolo_tile_33.png
+yolo_tile_34,yolo_tile_34,batch1,train/images/yolo_tile_34.png,train/masks/yolo_tile_34.png
+yolo_tile_35,yolo_tile_35,batch1,train/images/yolo_tile_35.png,train/masks/yolo_tile_35.png

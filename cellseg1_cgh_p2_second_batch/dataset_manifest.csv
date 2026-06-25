@@ -1,0 +1,7 @@
+tile_id,tile_name,image_file,mask_file,width,height,trainable_instances,clear_trainable,compact_trainable,edge_or_invalid_boundary_ignore,uncertain_ignore_regions,nuclei_total,nuclei_in_tile,stroma_regions_intersecting_tile
+human_compact_tile_001,Human compact tile 001,train/images/human_compact_tile_001.png,train/masks/human_compact_tile_001.png,512,512,131,3,128,0,0,0,0,7
+human_compact_tile_002,Human compact tile 002,train/images/human_compact_tile_002.png,train/masks/human_compact_tile_002.png,512,512,58,0,58,0,0,0,0,2
+human_compact_tile_003,Human compact tile 003,train/images/human_compact_tile_003.png,train/masks/human_compact_tile_003.png,512,512,17,0,17,0,0,0,0,3
+human_compact_tile_004,Human compact tile 004,train/images/human_compact_tile_004.png,train/masks/human_compact_tile_004.png,512,512,6,0,6,0,0,0,0,5
+human_compact_tile_005,Human compact tile 005,train/images/human_compact_tile_005.png,train/masks/human_compact_tile_005.png,512,512,35,0,35,0,0,0,0,5
+human_compact_tile_006,Human compact tile 006,train/images/human_compact_tile_006.png,train/masks/human_compact_tile_006.png,512,512,59,48,11,0,0,0,0,7
