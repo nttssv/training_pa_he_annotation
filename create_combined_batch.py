@@ -1,22 +1,20 @@
 #!/usr/bin/env python3
-"""Create a combined CellSeg1 training batch from batch 1 and batch 2.
+"""Create one self-contained combined CellSeg1 training batch.
 
-The combined batch uses relative symlinks for image/mask/review PNGs so the repo
-does not duplicate large binary assets. A normal git clone on Linux resolves
-these symlinks transparently for PIL/OpenCV-based training code.
+The output folder contains real copied files, not symlinks, so it can be used as
+a single unambiguous dataset root after cloning the repository on a GPU cluster.
 """
 
 from __future__ import annotations
 
 import csv
 import json
-import os
 import shutil
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-OUTPUT = ROOT / "cellseg1_cgh_p2_combined_batch"
+OUTPUT = ROOT / "cellseg1_cgh_p2_combined_41_full"
 
 BATCHES = [
     {
@@ -62,12 +60,11 @@ def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, object]]) 
         writer.writerows(rows)
 
 
-def rel_symlink(source: Path, dest: Path) -> None:
+def copy_asset(source: Path, dest: Path) -> None:
     dest.parent.mkdir(parents=True, exist_ok=True)
     if dest.exists() or dest.is_symlink():
         dest.unlink()
-    target = os.path.relpath(source, dest.parent)
-    dest.symlink_to(target)
+    shutil.copy2(source, dest)
 
 
 def copy_csv_or_symlink(source: Path, dest: Path) -> None:
@@ -152,8 +149,8 @@ def main() -> int:
             mask_source = batch_root / row["mask_file"]
             image_dest = OUTPUT / "train/images" / f"{tile_id}.png"
             mask_dest = OUTPUT / "train/masks" / f"{tile_id}.png"
-            rel_symlink(image_source, image_dest)
-            rel_symlink(mask_source, mask_dest)
+            copy_asset(image_source, image_dest)
+            copy_asset(mask_source, mask_dest)
 
             manifest_row = {field: row[field] for field in MANIFEST_FIELDS}
             manifest_row["image_file"] = f"train/images/{tile_id}.png"
@@ -183,7 +180,7 @@ def main() -> int:
             for source in sorted(source_dir.glob("*")):
                 if source.name.startswith("._") or not source.is_file():
                     continue
-                rel_symlink(source, OUTPUT / directory / source.name)
+                copy_asset(source, OUTPUT / directory / source.name)
 
         combined_cells.extend(cell_rows)
         combined_qc.extend(qc_rows)
@@ -252,7 +249,7 @@ def main() -> int:
 
     summary = {
         "source_type": "combined_cellseg1_cgh_p2_batch",
-        "storage": "relative_symlinks_to_batch1_and_batch2_assets",
+        "storage": "self_contained_copied_assets",
         "batches": batch_stats,
         **totals,
     }
@@ -263,11 +260,12 @@ def main() -> int:
     readme = f"""# Combined CGH P2 CellSeg1 Training Batch
 
 This directory combines the original CGH P2 training batch and the second
-PNG-derived compact-cell supplemental batch into one training entrypoint.
+PNG-derived compact-cell supplemental batch into one self-contained training
+entrypoint.
 
-The image, mask, auxiliary, semantic, and preview PNG files are relative
-symlinks back to the existing batch folders in this repository. This avoids
-duplicating large binary assets while keeping one combined manifest.
+The image, mask, auxiliary, semantic, and preview PNG files are copied into this
+folder as real files, not symlinks. Use this folder as the dataset root on the
+GPU cluster.
 
 ## Summary
 

@@ -1,0 +1,43 @@
+{
+  "source_type": "combined_cellseg1_cgh_p2_batch",
+  "storage": "self_contained_copied_assets",
+  "batches": [
+    {
+      "batch": "batch1",
+      "description": "Original curated CellSeg1 CGH P2 training batch.",
+      "source_root": ".",
+      "tile_count": 35,
+      "trainable_instances": 744,
+      "clear_trainable": 622,
+      "compact_trainable": 122,
+      "stroma_regions_intersecting_tile": 139,
+      "cell_instances_rows": 744,
+      "boundary_qc_rows": 818
+    },
+    {
+      "batch": "batch2",
+      "description": "PNG-derived compact-cell supplemental batch.",
+      "source_root": "cellseg1_cgh_p2_second_batch",
+      "tile_count": 6,
+      "trainable_instances": 306,
+      "clear_trainable": 51,
+      "compact_trainable": 255,
+      "stroma_regions_intersecting_tile": 29,
+      "cell_instances_rows": 306,
+      "boundary_qc_rows": 306
+    }
+  ],
+  "tile_count": 41,
+  "trainable_instances": 1050,
+  "clear_trainable": 673,
+  "compact_trainable": 377,
+  "stroma_regions_intersecting_tile": 168,
+  "cell_instances_rows": 1050,
+  "boundary_qc_rows": 1124,
+  "clear_percent": 64.095,
+  "compact_percent": 35.905,
+  "appledouble_cleanup": {
+    "performed": true,
+    "removed_before_summary_write": 520
+  }
+}
