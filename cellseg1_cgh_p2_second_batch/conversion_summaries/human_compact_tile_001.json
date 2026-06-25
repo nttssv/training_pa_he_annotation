@@ -1,0 +1,30 @@
+{
+  "tile_id": "human_compact_tile_001",
+  "source_type": "png_derived_from_human_overlay",
+  "before_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-ece9b2ac-d1a6-4bd9-bd0f-695b4c285bd0.png",
+  "after_annotated_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-33df39e5-0a33-4e55-82df-dd04ba064db7.png",
+  "annotated_crop_xyxy": [
+    34,
+    15,
+    805,
+    802
+  ],
+  "output_image_size": [
+    512,
+    512
+  ],
+  "trainable_instances": 131,
+  "clear_trainable": 3,
+  "compact_trainable": 128,
+  "stroma_regions_intersecting_tile": 7,
+  "line_pixels_512": {
+    "compact": 30047,
+    "stroma": 6324,
+    "clear": 2261
+  },
+  "notes": [
+    "Derived from colored overlay screenshot, not original QuPath vector objects.",
+    "Nucleus QC is unavailable; boundary_qc.csv marks PNG_DERIVED_NO_NUCLEUS_QC.",
+    "Only closed filled regions are exported as trainable positive instances."
+  ]
+}

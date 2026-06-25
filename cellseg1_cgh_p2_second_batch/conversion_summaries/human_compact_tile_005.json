@@ -1,0 +1,79 @@
+{
+  "tile_id": "human_compact_tile_005",
+  "source_type": "png_derived_from_human_overlay",
+  "before_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-139b8985-4de4-4bf7-986b-cfb9c55a0587.png",
+  "after_annotated_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-0e207c07-b28a-48ea-ba7a-a736c18aa936.png",
+  "annotated_crop_xyxy": [
+    50,
+    19,
+    427,
+    403
+  ],
+  "output_image_size": [
+    512,
+    512
+  ],
+  "trainable_instances": 35,
+  "clear_trainable": 0,
+  "compact_trainable": 35,
+  "stroma_regions_intersecting_tile": 5,
+  "line_pixels_512": {
+    "compact": 16723,
+    "stroma": 13911,
+    "clear": 0
+  },
+  "stroma_corridor_fill": {
+    "min_gap": 4,
+    "max_gap": 56,
+    "line_dilate": 2,
+    "close_iter": 2,
+    "rois_512": []
+  },
+  "stroma_color_trim": {
+    "enabled": false,
+    "pixels_before": 39592,
+    "pixels_after": 39592,
+    "max_value": 238.0,
+    "min_saturation": 0.075,
+    "min_pinkness": 15.0,
+    "dark_value": 210.0,
+    "dark_min_pinkness": 8.0,
+    "close_iter": 1,
+    "dilate": 1,
+    "min_area": 8,
+    "fill_holes_max_area": 0
+  },
+  "stroma_postprocess": {
+    "enabled": true,
+    "pixels_before": 39592,
+    "pixels_after": 40466,
+    "area_change_fraction": 0.022075,
+    "components_before": 10,
+    "components_after": 5,
+    "min_region_area": 16,
+    "fill_holes_max_area": 512,
+    "closing_radius": 1,
+    "opening_radius": 0,
+    "gaussian_sigma": 0.0,
+    "requested_threshold": 0.5,
+    "selected_threshold": null,
+    "area_change_tolerance": 0.05,
+    "preserve_core_radius": 0,
+    "pixels_after_final_remove": 39806,
+    "components_after_final_remove": 5
+  },
+  "extra_stroma_polygons_512": [],
+  "extra_stroma_red_masks": [],
+  "remove_stroma_red_masks": [
+    {
+      "source_path": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-904b1dd7-bc53-4154-9371-804b72abc496.png",
+      "copied_file": "source_pairs/human_compact_tile_005/remove_stroma_red_mask_001.png",
+      "pixels_512": 21886
+    }
+  ],
+  "notes": [
+    "Derived from colored overlay screenshot, not original QuPath vector objects.",
+    "Nucleus QC is unavailable; boundary_qc.csv marks PNG_DERIVED_NO_NUCLEUS_QC.",
+    "Only closed filled regions are exported as trainable positive instances."
+  ]
+}

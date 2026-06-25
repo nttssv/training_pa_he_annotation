@@ -1,0 +1,1100 @@
+{
+  "source_type": "png_derived_from_human_overlay_batch",
+  "datapoints": [
+    {
+      "tile_id": "human_compact_tile_001",
+      "source_type": "png_derived_from_human_overlay",
+      "before_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-ece9b2ac-d1a6-4bd9-bd0f-695b4c285bd0.png",
+      "after_annotated_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-33df39e5-0a33-4e55-82df-dd04ba064db7.png",
+      "annotated_crop_xyxy": [
+        34,
+        15,
+        805,
+        802
+      ],
+      "output_image_size": [
+        512,
+        512
+      ],
+      "trainable_instances": 131,
+      "clear_trainable": 3,
+      "compact_trainable": 128,
+      "stroma_regions_intersecting_tile": 7,
+      "line_pixels_512": {
+        "compact": 30047,
+        "stroma": 6324,
+        "clear": 2261
+      },
+      "notes": [
+        "Derived from colored overlay screenshot, not original QuPath vector objects.",
+        "Nucleus QC is unavailable; boundary_qc.csv marks PNG_DERIVED_NO_NUCLEUS_QC.",
+        "Only closed filled regions are exported as trainable positive instances."
+      ]
+    },
+    {
+      "tile_id": "human_compact_tile_002",
+      "source_type": "png_derived_from_human_overlay",
+      "before_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-0b57e530-4243-4682-bc64-bc7401374b25.png",
+      "after_annotated_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-c6e39fb1-3fb2-40c8-8ccd-b9ece3e5abb0.png",
+      "annotated_crop_xyxy": [
+        52,
+        21,
+        805,
+        797
+      ],
+      "output_image_size": [
+        512,
+        512
+      ],
+      "trainable_instances": 58,
+      "clear_trainable": 0,
+      "compact_trainable": 58,
+      "stroma_regions_intersecting_tile": 2,
+      "line_pixels_512": {
+        "compact": 16869,
+        "stroma": 6941,
+        "clear": 1
+      },
+      "extra_stroma_polygons_512": [
+        [
+          [
+            100,
+            0
+          ],
+          [
+            168,
+            0
+          ],
+          [
+            170,
+            38
+          ],
+          [
+            178,
+            58
+          ],
+          [
+            158,
+            94
+          ],
+          [
+            132,
+            130
+          ],
+          [
+            116,
+            174
+          ],
+          [
+            118,
+            210
+          ],
+          [
+            137,
+            230
+          ],
+          [
+            113,
+            228
+          ],
+          [
+            96,
+            212
+          ],
+          [
+            90,
+            176
+          ],
+          [
+            98,
+            130
+          ],
+          [
+            109,
+            82
+          ],
+          [
+            105,
+            42
+          ]
+        ],
+        [
+          [
+            0,
+            244
+          ],
+          [
+            42,
+            218
+          ],
+          [
+            70,
+            181
+          ],
+          [
+            96,
+            146
+          ],
+          [
+            114,
+            126
+          ],
+          [
+            101,
+            176
+          ],
+          [
+            105,
+            216
+          ],
+          [
+            126,
+            233
+          ],
+          [
+            166,
+            211
+          ],
+          [
+            197,
+            178
+          ],
+          [
+            228,
+            176
+          ],
+          [
+            246,
+            198
+          ],
+          [
+            240,
+            224
+          ],
+          [
+            204,
+            240
+          ],
+          [
+            185,
+            254
+          ],
+          [
+            184,
+            276
+          ],
+          [
+            207,
+            291
+          ],
+          [
+            222,
+            319
+          ],
+          [
+            210,
+            346
+          ],
+          [
+            186,
+            358
+          ],
+          [
+            169,
+            321
+          ],
+          [
+            127,
+            314
+          ],
+          [
+            83,
+            331
+          ],
+          [
+            33,
+            360
+          ],
+          [
+            0,
+            384
+          ]
+        ],
+        [
+          [
+            94,
+            128
+          ],
+          [
+            130,
+            126
+          ],
+          [
+            124,
+            176
+          ],
+          [
+            137,
+            220
+          ],
+          [
+            181,
+            202
+          ],
+          [
+            225,
+            181
+          ],
+          [
+            244,
+            199
+          ],
+          [
+            238,
+            224
+          ],
+          [
+            204,
+            239
+          ],
+          [
+            185,
+            254
+          ],
+          [
+            185,
+            278
+          ],
+          [
+            207,
+            292
+          ],
+          [
+            220,
+            318
+          ],
+          [
+            208,
+            342
+          ],
+          [
+            187,
+            352
+          ],
+          [
+            170,
+            312
+          ],
+          [
+            127,
+            310
+          ],
+          [
+            116,
+            230
+          ],
+          [
+            99,
+            213
+          ],
+          [
+            89,
+            177
+          ]
+        ],
+        [
+          [
+            0,
+            318
+          ],
+          [
+            68,
+            318
+          ],
+          [
+            68,
+            351
+          ],
+          [
+            35,
+            373
+          ],
+          [
+            0,
+            392
+          ]
+        ],
+        [
+          [
+            238,
+            286
+          ],
+          [
+            268,
+            296
+          ],
+          [
+            284,
+            319
+          ],
+          [
+            283,
+            350
+          ],
+          [
+            268,
+            371
+          ],
+          [
+            250,
+            352
+          ],
+          [
+            245,
+            319
+          ]
+        ],
+        [
+          [
+            0,
+            314
+          ],
+          [
+            64,
+            302
+          ],
+          [
+            124,
+            300
+          ],
+          [
+            178,
+            308
+          ],
+          [
+            220,
+            322
+          ],
+          [
+            218,
+            350
+          ],
+          [
+            188,
+            376
+          ],
+          [
+            128,
+            378
+          ],
+          [
+            64,
+            376
+          ],
+          [
+            0,
+            394
+          ]
+        ],
+        [
+          [
+            220,
+            292
+          ],
+          [
+            260,
+            292
+          ],
+          [
+            284,
+            316
+          ],
+          [
+            278,
+            342
+          ],
+          [
+            238,
+            328
+          ]
+        ],
+        [
+          [
+            242,
+            284
+          ],
+          [
+            270,
+            298
+          ],
+          [
+            286,
+            322
+          ],
+          [
+            286,
+            350
+          ],
+          [
+            270,
+            384
+          ],
+          [
+            248,
+            358
+          ],
+          [
+            238,
+            320
+          ]
+        ],
+        [
+          [
+            214,
+            284
+          ],
+          [
+            250,
+            290
+          ],
+          [
+            286,
+            322
+          ],
+          [
+            276,
+            356
+          ],
+          [
+            224,
+            346
+          ],
+          [
+            216,
+            318
+          ]
+        ],
+        [
+          [
+            216,
+            336
+          ],
+          [
+            246,
+            342
+          ],
+          [
+            270,
+            362
+          ],
+          [
+            250,
+            365
+          ],
+          [
+            222,
+            356
+          ]
+        ],
+        [
+          [
+            244,
+            344
+          ],
+          [
+            272,
+            364
+          ],
+          [
+            260,
+            384
+          ],
+          [
+            242,
+            364
+          ]
+        ]
+      ],
+      "notes": [
+        "Derived from colored overlay screenshot, not original QuPath vector objects.",
+        "Nucleus QC is unavailable; boundary_qc.csv marks PNG_DERIVED_NO_NUCLEUS_QC.",
+        "Only closed filled regions are exported as trainable positive instances."
+      ]
+    },
+    {
+      "tile_id": "human_compact_tile_003",
+      "source_type": "png_derived_from_human_overlay",
+      "before_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-becc7d4a-0522-4c7f-8a1a-f5b1ffa88503.png",
+      "after_annotated_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-7f836686-d200-4214-9441-69c392f9e809.png",
+      "annotated_crop_xyxy": [
+        24,
+        18,
+        737,
+        768
+      ],
+      "output_image_size": [
+        512,
+        512
+      ],
+      "trainable_instances": 17,
+      "clear_trainable": 0,
+      "compact_trainable": 17,
+      "stroma_regions_intersecting_tile": 3,
+      "line_pixels_512": {
+        "compact": 11632,
+        "stroma": 16050,
+        "clear": 1
+      },
+      "extra_stroma_polygons_512": [
+        [
+          [
+            220,
+            0
+          ],
+          [
+            384,
+            0
+          ],
+          [
+            384,
+            44
+          ],
+          [
+            352,
+            70
+          ],
+          [
+            326,
+            88
+          ],
+          [
+            286,
+            80
+          ],
+          [
+            250,
+            58
+          ],
+          [
+            232,
+            24
+          ]
+        ],
+        [
+          [
+            232,
+            0
+          ],
+          [
+            250,
+            0
+          ],
+          [
+            256,
+            48
+          ],
+          [
+            250,
+            118
+          ],
+          [
+            246,
+            136
+          ],
+          [
+            244,
+            198
+          ],
+          [
+            230,
+            206
+          ],
+          [
+            232,
+            128
+          ],
+          [
+            236,
+            64
+          ]
+        ],
+        [
+          [
+            0,
+            252
+          ],
+          [
+            66,
+            250
+          ],
+          [
+            96,
+            288
+          ],
+          [
+            94,
+            384
+          ],
+          [
+            76,
+            448
+          ],
+          [
+            42,
+            512
+          ],
+          [
+            0,
+            512
+          ]
+        ],
+        [
+          [
+            64,
+            318
+          ],
+          [
+            130,
+            330
+          ],
+          [
+            132,
+            448
+          ],
+          [
+            82,
+            448
+          ],
+          [
+            42,
+            512
+          ],
+          [
+            74,
+            448
+          ],
+          [
+            94,
+            384
+          ]
+        ],
+        [
+          [
+            184,
+            188
+          ],
+          [
+            260,
+            186
+          ],
+          [
+            282,
+            206
+          ],
+          [
+            238,
+            220
+          ],
+          [
+            200,
+            210
+          ]
+        ],
+        [
+          [
+            256,
+            190
+          ],
+          [
+            322,
+            258
+          ],
+          [
+            300,
+            302
+          ],
+          [
+            326,
+            390
+          ],
+          [
+            286,
+            354
+          ],
+          [
+            272,
+            292
+          ],
+          [
+            238,
+            260
+          ],
+          [
+            252,
+            216
+          ]
+        ],
+        [
+          [
+            256,
+            300
+          ],
+          [
+            328,
+            390
+          ],
+          [
+            282,
+            356
+          ],
+          [
+            242,
+            386
+          ],
+          [
+            224,
+            352
+          ]
+        ],
+        [
+          [
+            474,
+            126
+          ],
+          [
+            512,
+            106
+          ],
+          [
+            512,
+            198
+          ],
+          [
+            494,
+            206
+          ],
+          [
+            480,
+            170
+          ]
+        ],
+        [
+          [
+            450,
+            286
+          ],
+          [
+            512,
+            244
+          ],
+          [
+            512,
+            384
+          ],
+          [
+            474,
+            386
+          ],
+          [
+            450,
+            348
+          ]
+        ],
+        [
+          [
+            496,
+            198
+          ],
+          [
+            512,
+            188
+          ],
+          [
+            512,
+            300
+          ],
+          [
+            492,
+            286
+          ],
+          [
+            500,
+            248
+          ]
+        ],
+        [
+          [
+            488,
+            232
+          ],
+          [
+            512,
+            210
+          ],
+          [
+            512,
+            300
+          ],
+          [
+            496,
+            288
+          ],
+          [
+            486,
+            260
+          ]
+        ]
+      ],
+      "notes": [
+        "Derived from colored overlay screenshot, not original QuPath vector objects.",
+        "Nucleus QC is unavailable; boundary_qc.csv marks PNG_DERIVED_NO_NUCLEUS_QC.",
+        "Only closed filled regions are exported as trainable positive instances."
+      ]
+    },
+    {
+      "tile_id": "human_compact_tile_004",
+      "source_type": "png_derived_from_human_overlay",
+      "before_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-3916ed67-0fde-43f4-9f27-c3937b71e4d0.png",
+      "after_annotated_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-4ae49c80-013b-40a5-977d-0d8f1d957ba7.png",
+      "annotated_crop_xyxy": [
+        24,
+        12,
+        747,
+        762
+      ],
+      "output_image_size": [
+        512,
+        512
+      ],
+      "trainable_instances": 6,
+      "clear_trainable": 0,
+      "compact_trainable": 6,
+      "stroma_regions_intersecting_tile": 5,
+      "line_pixels_512": {
+        "compact": 3315,
+        "stroma": 15170,
+        "clear": 0
+      },
+      "stroma_corridor_fill": {
+        "min_gap": 4,
+        "max_gap": 40,
+        "line_dilate": 2,
+        "close_iter": 2,
+        "rois_512": []
+      },
+      "stroma_color_trim": {
+        "enabled": true,
+        "pixels_before": 48942,
+        "pixels_after": 46847,
+        "max_value": 230.0,
+        "min_saturation": 0.09,
+        "min_pinkness": 20.0,
+        "dark_value": 200.0,
+        "dark_min_pinkness": 10.0,
+        "close_iter": 1,
+        "dilate": 1,
+        "min_area": 8,
+        "fill_holes_max_area": 50
+      },
+      "stroma_postprocess": {
+        "enabled": true,
+        "pixels_before": 46847,
+        "pixels_after": 46592,
+        "area_change_fraction": 0.005443,
+        "components_before": 14,
+        "components_after": 5,
+        "min_region_area": 32,
+        "fill_holes_max_area": 128,
+        "closing_radius": 1,
+        "opening_radius": 1,
+        "gaussian_sigma": 0.9,
+        "requested_threshold": 0.5,
+        "selected_threshold": 0.6,
+        "area_change_tolerance": 0.06,
+        "preserve_core_radius": 1
+      },
+      "extra_stroma_polygons_512": [],
+      "extra_stroma_red_masks": [
+        {
+          "source_path": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-20993585-4c21-4884-9c24-7feb00b344d7.png",
+          "copied_file": "source_pairs/human_compact_tile_004/extra_stroma_red_mask_001.png",
+          "pixels_512": 8494
+        },
+        {
+          "source_path": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-25328ede-7fbe-4be0-96aa-90f694af62fe.png",
+          "copied_file": "source_pairs/human_compact_tile_004/extra_stroma_red_mask_002.png",
+          "pixels_512": 30159
+        }
+      ],
+      "notes": [
+        "Derived from colored overlay screenshot, not original QuPath vector objects.",
+        "Nucleus QC is unavailable; boundary_qc.csv marks PNG_DERIVED_NO_NUCLEUS_QC.",
+        "Only closed filled regions are exported as trainable positive instances."
+      ]
+    },
+    {
+      "tile_id": "human_compact_tile_005",
+      "source_type": "png_derived_from_human_overlay",
+      "before_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-139b8985-4de4-4bf7-986b-cfb9c55a0587.png",
+      "after_annotated_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-0e207c07-b28a-48ea-ba7a-a736c18aa936.png",
+      "annotated_crop_xyxy": [
+        50,
+        19,
+        427,
+        403
+      ],
+      "output_image_size": [
+        512,
+        512
+      ],
+      "trainable_instances": 35,
+      "clear_trainable": 0,
+      "compact_trainable": 35,
+      "stroma_regions_intersecting_tile": 5,
+      "line_pixels_512": {
+        "compact": 16723,
+        "stroma": 13911,
+        "clear": 0
+      },
+      "stroma_corridor_fill": {
+        "min_gap": 4,
+        "max_gap": 56,
+        "line_dilate": 2,
+        "close_iter": 2,
+        "rois_512": []
+      },
+      "stroma_color_trim": {
+        "enabled": false,
+        "pixels_before": 39592,
+        "pixels_after": 39592,
+        "max_value": 238.0,
+        "min_saturation": 0.075,
+        "min_pinkness": 15.0,
+        "dark_value": 210.0,
+        "dark_min_pinkness": 8.0,
+        "close_iter": 1,
+        "dilate": 1,
+        "min_area": 8,
+        "fill_holes_max_area": 0
+      },
+      "stroma_postprocess": {
+        "enabled": true,
+        "pixels_before": 39592,
+        "pixels_after": 40466,
+        "area_change_fraction": 0.022075,
+        "components_before": 10,
+        "components_after": 5,
+        "min_region_area": 16,
+        "fill_holes_max_area": 512,
+        "closing_radius": 1,
+        "opening_radius": 0,
+        "gaussian_sigma": 0.0,
+        "requested_threshold": 0.5,
+        "selected_threshold": null,
+        "area_change_tolerance": 0.05,
+        "preserve_core_radius": 0,
+        "pixels_after_final_remove": 39806,
+        "components_after_final_remove": 5
+      },
+      "extra_stroma_polygons_512": [],
+      "extra_stroma_red_masks": [],
+      "remove_stroma_red_masks": [
+        {
+          "source_path": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-904b1dd7-bc53-4154-9371-804b72abc496.png",
+          "copied_file": "source_pairs/human_compact_tile_005/remove_stroma_red_mask_001.png",
+          "pixels_512": 21886
+        }
+      ],
+      "notes": [
+        "Derived from colored overlay screenshot, not original QuPath vector objects.",
+        "Nucleus QC is unavailable; boundary_qc.csv marks PNG_DERIVED_NO_NUCLEUS_QC.",
+        "Only closed filled regions are exported as trainable positive instances."
+      ]
+    },
+    {
+      "tile_id": "human_compact_tile_006",
+      "source_type": "png_derived_from_human_overlay",
+      "before_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-afaf791f-c27e-49e3-8be2-615d56b441b1.png",
+      "after_annotated_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-1bcef6f4-5eb3-4d8b-84c2-c22d1076c99f.png",
+      "annotated_crop_xyxy": [
+        17,
+        12,
+        373,
+        371
+      ],
+      "output_image_size": [
+        512,
+        512
+      ],
+      "trainable_instances": 59,
+      "clear_trainable": 48,
+      "compact_trainable": 11,
+      "stroma_regions_intersecting_tile": 7,
+      "line_pixels_512": {
+        "compact": 1630,
+        "stroma": 8855,
+        "clear": 21042
+      },
+      "cell_fill": {
+        "mode": "combined_lines",
+        "line_dilate": 2,
+        "classify_boundary_dilate": 4,
+        "compact_boundary_contact_min": 20,
+        "compact_boundary_contact_ratio": 0.25,
+        "clear_boundary_contact_min": 20
+      },
+      "stroma_corridor_fill": {
+        "min_gap": 4,
+        "max_gap": 32,
+        "line_dilate": 2,
+        "close_iter": 2,
+        "rois_512": []
+      },
+      "stroma_color_trim": {
+        "enabled": false,
+        "pixels_before": 29044,
+        "pixels_after": 29044,
+        "max_value": 238.0,
+        "min_saturation": 0.075,
+        "min_pinkness": 15.0,
+        "dark_value": 210.0,
+        "dark_min_pinkness": 8.0,
+        "close_iter": 1,
+        "dilate": 1,
+        "min_area": 8,
+        "fill_holes_max_area": 0
+      },
+      "stroma_postprocess": {
+        "enabled": true,
+        "pixels_before": 29044,
+        "pixels_after": 29162,
+        "area_change_fraction": 0.004063,
+        "components_before": 7,
+        "components_after": 7,
+        "min_region_area": 16,
+        "fill_holes_max_area": 256,
+        "closing_radius": 1,
+        "opening_radius": 0,
+        "gaussian_sigma": 0.0,
+        "requested_threshold": 0.5,
+        "selected_threshold": null,
+        "area_change_tolerance": 0.05,
+        "preserve_core_radius": 0
+      },
+      "extra_stroma_polygons_512": [],
+      "extra_stroma_red_masks": [],
+      "remove_stroma_red_masks": [],
+      "notes": [
+        "Derived from colored overlay screenshot, not original QuPath vector objects.",
+        "Nucleus QC is unavailable; boundary_qc.csv marks PNG_DERIVED_NO_NUCLEUS_QC.",
+        "Only closed filled regions are exported as trainable positive instances."
+      ]
+    }
+  ],
+  "tile_count": 6,
+  "trainable_instances": 306,
+  "clear_trainable": 51,
+  "compact_trainable": 255,
+  "cell_instances_rows": 306,
+  "boundary_qc_rows": 306
+}

@@ -1,0 +1,79 @@
+{
+  "tile_id": "human_compact_tile_006",
+  "source_type": "png_derived_from_human_overlay",
+  "before_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-afaf791f-c27e-49e3-8be2-615d56b441b1.png",
+  "after_annotated_image": "/private/var/folders/6p/xt7tcdl57ysc6c1pdxwpq0nw0000gn/T/codex-clipboard-1bcef6f4-5eb3-4d8b-84c2-c22d1076c99f.png",
+  "annotated_crop_xyxy": [
+    17,
+    12,
+    373,
+    371
+  ],
+  "output_image_size": [
+    512,
+    512
+  ],
+  "trainable_instances": 59,
+  "clear_trainable": 48,
+  "compact_trainable": 11,
+  "stroma_regions_intersecting_tile": 7,
+  "line_pixels_512": {
+    "compact": 1630,
+    "stroma": 8855,
+    "clear": 21042
+  },
+  "cell_fill": {
+    "mode": "combined_lines",
+    "line_dilate": 2,
+    "classify_boundary_dilate": 4,
+    "compact_boundary_contact_min": 20,
+    "compact_boundary_contact_ratio": 0.25,
+    "clear_boundary_contact_min": 20
+  },
+  "stroma_corridor_fill": {
+    "min_gap": 4,
+    "max_gap": 32,
+    "line_dilate": 2,
+    "close_iter": 2,
+    "rois_512": []
+  },
+  "stroma_color_trim": {
+    "enabled": false,
+    "pixels_before": 29044,
+    "pixels_after": 29044,
+    "max_value": 238.0,
+    "min_saturation": 0.075,
+    "min_pinkness": 15.0,
+    "dark_value": 210.0,
+    "dark_min_pinkness": 8.0,
+    "close_iter": 1,
+    "dilate": 1,
+    "min_area": 8,
+    "fill_holes_max_area": 0
+  },
+  "stroma_postprocess": {
+    "enabled": true,
+    "pixels_before": 29044,
+    "pixels_after": 29162,
+    "area_change_fraction": 0.004063,
+    "components_before": 7,
+    "components_after": 7,
+    "min_region_area": 16,
+    "fill_holes_max_area": 256,
+    "closing_radius": 1,
+    "opening_radius": 0,
+    "gaussian_sigma": 0.0,
+    "requested_threshold": 0.5,
+    "selected_threshold": null,
+    "area_change_tolerance": 0.05,
+    "preserve_core_radius": 0
+  },
+  "extra_stroma_polygons_512": [],
+  "extra_stroma_red_masks": [],
+  "remove_stroma_red_masks": [],
+  "notes": [
+    "Derived from colored overlay screenshot, not original QuPath vector objects.",
+    "Nucleus QC is unavailable; boundary_qc.csv marks PNG_DERIVED_NO_NUCLEUS_QC.",
+    "Only closed filled regions are exported as trainable positive instances."
+  ]
+}
