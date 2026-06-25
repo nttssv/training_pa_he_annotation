@@ -6,10 +6,10 @@ thresholds_config: training/configs/qc_thresholds.yaml
 
 paths:
   dataset_root: ${CGH_DATASET_ROOT:-cellseg1_cgh_p2_combined_batch}
-  image_dir: images
-  boundary_mask_dir: masks
-  auxiliary_mask_dir: auxiliary_masks
-  metadata_dir: metadata
+  image_dir: ${CGH_IMAGE_DIR:-images}
+  boundary_mask_dir: ${CGH_BOUNDARY_MASK_DIR:-masks}
+  auxiliary_mask_dir: ${CGH_AUXILIARY_MASK_DIR:-auxiliary_masks}
+  metadata_dir: ${CGH_METADATA_DIR:-metadata}
   output_root: ${CGH_OUTPUT_ROOT:-outputs/runs}
 
 data:
@@ -61,4 +61,3 @@ models:
     sam_image_size: 512
     duplicate_data: ${CELLSEG1_DUPLICATE_DATA:-64}
     workers: 0
-

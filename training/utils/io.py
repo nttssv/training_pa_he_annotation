@@ -107,13 +107,80 @@ def expand_env_values(value: Any) -> Any:
 
 def dataset_paths(cfg: dict[str, Any]) -> dict[str, Path]:
     root = resolve_path(cfg, require_config(cfg, "paths.dataset_root"))
-    paths = require_config(cfg, "paths")
+    return infer_dataset_paths(
+        root=root,
+        image_dir=require_config(cfg, "paths.image_dir"),
+        boundary_mask_dir=require_config(cfg, "paths.boundary_mask_dir"),
+        auxiliary_mask_dir=require_config(cfg, "paths.auxiliary_mask_dir"),
+        metadata_dir=require_config(cfg, "paths.metadata_dir"),
+    )
+
+
+def infer_dataset_paths(
+    root: Path,
+    image_dir: str,
+    boundary_mask_dir: str,
+    auxiliary_mask_dir: str,
+    metadata_dir: str,
+) -> dict[str, Path]:
+    """Resolve dataset folders and tolerate common packaged layouts.
+
+    Supported layouts include:
+    - root/images + root/masks
+    - root/train/images + root/train/masks
+    - root/dataset/images + root/dataset/masks
+    """
+    images = root / image_dir
+    boundary_masks = root / boundary_mask_dir
+    auxiliary_masks = root / auxiliary_mask_dir
+    metadata = root / metadata_dir
+
+    candidates = [
+        {
+            "images": root / "images",
+            "boundary_masks": root / "masks",
+            "auxiliary_masks": root / "auxiliary_masks",
+            "metadata": root / "metadata",
+        },
+        {
+            "images": root / "train" / "images",
+            "boundary_masks": root / "train" / "masks",
+            "auxiliary_masks": root / "auxiliary_masks",
+            "metadata": root,
+        },
+        {
+            "images": root / "dataset" / "images",
+            "boundary_masks": root / "dataset" / "masks",
+            "auxiliary_masks": root / "dataset" / "auxiliary_masks",
+            "metadata": root / "dataset" / "metadata",
+        },
+    ]
+    if not images.exists() or not boundary_masks.exists():
+        for candidate in candidates:
+            if candidate["images"].exists() and candidate["boundary_masks"].exists():
+                images = candidate["images"]
+                boundary_masks = candidate["boundary_masks"]
+                if candidate["auxiliary_masks"].exists():
+                    auxiliary_masks = candidate["auxiliary_masks"]
+                if candidate["metadata"].exists():
+                    metadata = candidate["metadata"]
+                break
+    if not auxiliary_masks.exists():
+        for candidate in candidates:
+            if candidate["auxiliary_masks"].exists():
+                auxiliary_masks = candidate["auxiliary_masks"]
+                break
+    if not metadata.exists():
+        for candidate in candidates:
+            if candidate["metadata"].exists():
+                metadata = candidate["metadata"]
+                break
     return {
         "root": root,
-        "images": root / require_config(cfg, "paths.image_dir"),
-        "boundary_masks": root / require_config(cfg, "paths.boundary_mask_dir"),
-        "auxiliary_masks": root / require_config(cfg, "paths.auxiliary_mask_dir"),
-        "metadata": root / require_config(cfg, "paths.metadata_dir"),
+        "images": images,
+        "boundary_masks": boundary_masks,
+        "auxiliary_masks": auxiliary_masks,
+        "metadata": metadata,
     }
 
 
@@ -122,7 +189,11 @@ def ensure_dataset_layout(cfg: dict[str, Any]) -> dict[str, Path]:
     missing = [name for name, path in paths.items() if name != "metadata" and not path.exists()]
     if missing:
         detail = ", ".join(f"{name}={paths[name]}" for name in missing)
-        raise PipelineError("path", f"Dataset layout is incomplete: {detail}")
+        hint = (
+            "Expected either root/images + root/masks or root/train/images + root/train/masks. "
+            "Check with: find \"$CGH_DATASET_ROOT\" -maxdepth 3 -type d | sort"
+        )
+        raise PipelineError("path", f"Dataset layout is incomplete: {detail}. {hint}")
     return paths
 
 

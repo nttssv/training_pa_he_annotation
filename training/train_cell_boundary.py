@@ -14,7 +14,7 @@ import yaml
 
 from training.split_dataset import split_pairs
 from training.train_yolo_nuclei import smoke_forward_backward
-from training.utils.io import PipelineError, resolve_path, write_csv, write_json
+from training.utils.io import PipelineError, dataset_paths, resolve_path, write_csv, write_json
 from training.utils.progress import ProgressTracker, print_epoch_progress
 from training.utils.visualization import overlay_masks, plot_history
 
@@ -126,7 +126,8 @@ def write_tensorboard_smoke(dirs: dict[str, Path], summary: dict[str, Any]) -> N
 
 def build_cellseg1_config(cfg: dict[str, Any], dirs: dict[str, Path]) -> Path:
     boundary_cfg = cfg.get("models", {}).get("boundary", {})
-    dataset_root = resolve_path(cfg, cfg["paths"]["dataset_root"])
+    resolved_dataset = dataset_paths(cfg)
+    dataset_root = resolved_dataset["root"]
     checkpoint = boundary_cfg.get("sam_checkpoint", "")
     if not checkpoint:
         raise PipelineError("config", "models.boundary.sam_checkpoint is required for CellSeg1 training")
@@ -143,8 +144,8 @@ def build_cellseg1_config(cfg: dict[str, Any], dirs: dict[str, Path]) -> Path:
         "model_path": str(checkpoint_path),
         "data_dir": str(dataset_root),
         "result_pth_path": str(dirs["checkpoints"] / "cell_boundary_lora.pth"),
-        "train_image_dir": str(dataset_root / cfg["paths"]["image_dir"]),
-        "train_mask_dir": str(dataset_root / cfg["paths"]["boundary_mask_dir"]),
+        "train_image_dir": str(resolved_dataset["images"]),
+        "train_mask_dir": str(resolved_dataset["boundary_masks"]),
         "resize_size": boundary_cfg.get("resize_size", [512, 512]),
         "patch_size": 0,
         "sam_image_size": int(boundary_cfg.get("sam_image_size", 512)),

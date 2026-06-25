@@ -25,6 +25,8 @@ fi
 
 echo "Using CGH_DATASET_ROOT=$CGH_DATASET_ROOT"
 echo "Using CGH_OUTPUT_ROOT=$CGH_OUTPUT_ROOT"
+echo "Dataset folders:"
+find "$CGH_DATASET_ROOT" -maxdepth 2 -type d | sort | sed -n '1,80p'
 
 if command -v conda >/dev/null 2>&1 && [[ -n "${CGH_CONDA_ENV:-}" ]]; then
   # shellcheck disable=SC1091
