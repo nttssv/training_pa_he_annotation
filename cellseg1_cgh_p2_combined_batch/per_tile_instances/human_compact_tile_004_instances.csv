@@ -1,0 +1,7 @@
+instance_label,boundary_name,boundary_class,nucleus_name,boundary_area_px,local_centroid_x,local_centroid_y,wsi_centroid_x,wsi_centroid_y,nucleus_wsi_x,nucleus_wsi_y,stroma_overlap_px,stroma_overlap_fraction
+1,HCT004_CompactCellBoundary_001,GT Compact cell boundary,,3261.0,140.6,21.5,,,,,0.0,0.0000
+2,HCT004_CompactCellBoundary_002,GT Compact cell boundary,,1965.0,345.2,272.0,,,,,0.0,0.0000
+3,HCT004_CompactCellBoundary_003,GT Compact cell boundary,,1446.0,300.4,295.8,,,,,0.0,0.0000
+4,HCT004_CompactCellBoundary_004,GT Compact cell boundary,,897.0,425.9,357.8,,,,,0.0,0.0000
+5,HCT004_CompactCellBoundary_005,GT Compact cell boundary,,353.0,433.4,381.0,,,,,0.0,0.0000
+6,HCT004_CompactCellBoundary_006,GT Compact cell boundary,,1211.0,426.0,434.5,,,,,0.0,0.0000
