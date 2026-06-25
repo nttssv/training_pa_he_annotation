@@ -1,0 +1,64 @@
+experiment:
+  name: adrenal_he_morphology_local
+  seed: 42
+
+thresholds_config: training/configs/qc_thresholds.yaml
+
+paths:
+  dataset_root: training_data/dataset/cellseg1_instance_train
+  image_dir: images
+  boundary_mask_dir: masks
+  auxiliary_mask_dir: auxiliary_masks
+  metadata_dir: metadata
+  output_root: outputs/runs
+
+data:
+  image_extensions: [".png", ".jpg", ".jpeg", ".tif", ".tiff"]
+  classes:
+    0: nucleus
+    1: clear_cell_boundary
+    2: compact_cell_boundary
+    3: stroma
+
+split:
+  val_every: 5
+  val_fraction: 0.2
+
+runtime:
+  device: cpu
+  require_cuda: false
+  resume_checkpoint: ""
+
+smoke:
+  num_images: 3
+
+visualization:
+  max_preview_tiles: 16
+  max_overlay_examples: 8
+
+models:
+  nuclei:
+    type: yolo-seg
+    base_model: yolov8s-seg.pt
+    data_yaml: training_data/dataset/yolo_seg_dataset/data.yaml
+    epochs: 120
+    smoke_epochs: 1
+    batch_size: 8
+    smoke_batch_size: 2
+    imgsz: 512
+    workers: 0
+    learning_rate: 0.002
+  boundary:
+    type: cellseg1-sam-lora
+    cellseg1_repo: qupath_work/cellseg1_repo
+    sam_checkpoint: ""
+    vit_name: vit_h
+    epochs: 120
+    batch_size: 1
+    gradient_accumulation_step: 32
+    learning_rate: 0.003
+    resize_size: [512, 512]
+    sam_image_size: 512
+    duplicate_data: 64
+    workers: 0
+

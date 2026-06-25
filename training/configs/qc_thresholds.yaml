@@ -1,0 +1,11 @@
+qc:
+  min_cell_area_px: 100
+  min_nucleus_area_px: 12
+  edge_margin_px: 2
+  max_stroma_overlap_fraction: 0.05
+  max_uncertain_overlap_fraction: 0.01
+  valid_cell_requires_exactly_one_nucleus: true
+
+measurement:
+  pixel_size_um: 0.25
+

@@ -1,0 +1,25 @@
+venv/
+venv_yolo/
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+
+# Notebook-generated outputs
+notebook_output/
+output/
+segmentation_runs/
+rule_based_runs/
+rule_based_runs_test/
+rule_based_tile_runs/
+single_image_prototype_runs/
+outputs/runs/
+
+# Future YOLO artifacts
+datasets/
+runs/
+*.pt
+
+# Prototype 1 QuPath training artifacts
+prototype_1/training/qupath_yolo_dataset/
+prototype_1/training/yolo_runs/

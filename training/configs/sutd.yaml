@@ -1,0 +1,64 @@
+experiment:
+  name: adrenal_he_morphology_sutd
+  seed: 42
+
+thresholds_config: training/configs/qc_thresholds.yaml
+
+paths:
+  dataset_root: ${CGH_DATASET_ROOT:-cellseg1_cgh_p2_combined_batch}
+  image_dir: images
+  boundary_mask_dir: masks
+  auxiliary_mask_dir: auxiliary_masks
+  metadata_dir: metadata
+  output_root: ${CGH_OUTPUT_ROOT:-outputs/runs}
+
+data:
+  image_extensions: [".png", ".jpg", ".jpeg", ".tif", ".tiff"]
+  classes:
+    0: nucleus
+    1: clear_cell_boundary
+    2: compact_cell_boundary
+    3: stroma
+
+split:
+  val_every: 5
+  val_fraction: 0.2
+
+runtime:
+  device: "0"
+  require_cuda: true
+  resume_checkpoint: ${CGH_RESUME_CHECKPOINT:-}
+
+smoke:
+  num_images: 3
+
+visualization:
+  max_preview_tiles: 20
+  max_overlay_examples: 12
+
+models:
+  nuclei:
+    type: yolo-seg
+    base_model: ${CGH_YOLO_BASE_MODEL:-yolov8s-seg.pt}
+    data_yaml: ${CGH_YOLO_DATA_YAML:-training_data/dataset/yolo_seg_dataset/data.yaml}
+    epochs: ${CGH_YOLO_EPOCHS:-120}
+    smoke_epochs: 1
+    batch_size: ${CGH_YOLO_BATCH:-8}
+    smoke_batch_size: 2
+    imgsz: ${CGH_IMGSZ:-512}
+    workers: ${CGH_WORKERS:-4}
+    learning_rate: ${CGH_YOLO_LR:-0.002}
+  boundary:
+    type: cellseg1-sam-lora
+    cellseg1_repo: ${CELLSEG1_REPO:-qupath_work/cellseg1_repo}
+    sam_checkpoint: ${CELLSEG1_SAM_CHECKPOINT:-}
+    vit_name: vit_h
+    epochs: ${CELLSEG1_EPOCHS:-120}
+    batch_size: ${CELLSEG1_BATCH:-1}
+    gradient_accumulation_step: ${CELLSEG1_GRAD_ACCUM:-32}
+    learning_rate: ${CELLSEG1_BASE_LR:-0.003}
+    resize_size: [512, 512]
+    sam_image_size: 512
+    duplicate_data: ${CELLSEG1_DUPLICATE_DATA:-64}
+    workers: 0
+

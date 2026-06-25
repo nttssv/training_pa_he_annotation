@@ -1,0 +1,15 @@
+cellpose>=4.0.1
+ipykernel
+matplotlib
+numpy
+opencv-python-headless
+pandas
+psutil
+PyYAML
+rich
+scikit-image
+scipy
+streamlit
+tensorboard
+tqdm
+ultralytics
