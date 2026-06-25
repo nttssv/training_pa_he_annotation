@@ -7,6 +7,7 @@ CellSeg1 repository being installed as a package.
 from __future__ import annotations
 
 import argparse
+import csv
 import faulthandler
 import json
 import os
@@ -105,6 +106,23 @@ def nvidia_snapshot() -> str:
     return result.stdout.strip() or result.stderr.strip() or "nvidia-smi returned no output"
 
 
+def append_csv_row(path: Path, row: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    exists = path.exists()
+    with path.open("a", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(row.keys()))
+        if not exists:
+            writer.writeheader()
+        writer.writerow(row)
+
+
+def current_lr(optimizer: Any) -> float | None:
+    try:
+        return float(optimizer.param_groups[0]["lr"])
+    except Exception:
+        return None
+
+
 def start_heartbeat(stop_event: Event, config: dict[str, Any], started: float) -> Thread:
     interval = int(os.getenv("CELLSEG1_HEARTBEAT_SECONDS", "30"))
     result_path = Path(config["result_pth_path"])
@@ -165,22 +183,109 @@ def install_cellseg1_debug_hooks(cellseg1_train: Any) -> None:
     wrap_step(cellseg1_train, "setup_training", after=after_setup)
     wrap_step(cellseg1_train, "save_model_pth")
 
-    original_train_epoch = cellseg1_train.train_epoch
     epoch_state = {"epoch": 0}
+    loss_log_interval = int(os.getenv("CELLSEG1_LOSS_LOG_INTERVAL", "10"))
 
-    def train_epoch_debug(*args: Any, **kwargs: Any) -> Any:
+    def train_epoch_debug(
+        model: Any,
+        config: dict[str, Any],
+        trainloader: Any,
+        optimizer: Any,
+        scheduler: Any,
+        stop_event: Any = None,
+    ) -> None:
         epoch_state["epoch"] += 1
         epoch = epoch_state["epoch"]
         started = time.time()
         log("START train_epoch", epoch=epoch)
+        model.train()
+        actual_ga_step = 0
+        losses: list[float] = []
+        skipped_batches = 0
+        total_batches = len(trainloader)
+        history_path = Path(config["result_pth_path"]).parent / "cellseg1_training_history.csv"
+
         try:
-            result = original_train_epoch(*args, **kwargs)
+            for i_batch, batch_data in enumerate(cellseg1_train.tqdm(trainloader, desc="Batches", leave=False)):
+                if stop_event is not None and stop_event.is_set():
+                    log("STOP train_epoch", epoch=epoch, reason="stop_event")
+                    return
+
+                images, true_instance_masks, cell_masks, all_points, all_cell_probs = batch_data
+
+                if not cellseg1_train.is_valid_batch(images, all_points):
+                    skipped_batches += 1
+                    continue
+
+                batch_images, batch_points = cellseg1_train.to_tensor(
+                    images,
+                    all_points,
+                    config["sam_image_size"],
+                )
+                loss = cellseg1_train.compute_loss(
+                    model,
+                    config,
+                    batch_images,
+                    batch_points,
+                    cell_masks,
+                    all_points,
+                    all_cell_probs,
+                )
+                loss_value = float(loss.detach().cpu().item())
+                losses.append(loss_value)
+
+                actual_ga_step += 1
+                denominator = actual_ga_step if (i_batch + 1) == total_batches else config["gradient_accumulation_step"]
+                loss_ga = loss / denominator
+                loss_ga.backward()
+
+                did_step = False
+                if ((i_batch + 1) % config["gradient_accumulation_step"] == 0) or ((i_batch + 1) == total_batches):
+                    optimizer.step()
+                    optimizer.zero_grad()
+                    actual_ga_step = 0
+                    scheduler.step()
+                    did_step = True
+
+                batch_num = i_batch + 1
+                should_log = (
+                    batch_num == 1
+                    or batch_num == total_batches
+                    or (loss_log_interval > 0 and batch_num % loss_log_interval == 0)
+                    or did_step
+                )
+                if should_log:
+                    log(
+                        "BATCH train_loss",
+                        epoch=epoch,
+                        batch=batch_num,
+                        total_batches=total_batches,
+                        loss=round(loss_value, 6),
+                        epoch_avg_loss=round(sum(losses) / len(losses), 6),
+                        lr=current_lr(optimizer),
+                        optimizer_step=did_step,
+                        skipped_batches=skipped_batches,
+                    )
         except Exception:
             log("FAILED train_epoch", epoch=epoch, elapsed_sec=round(time.time() - started, 3))
             traceback.print_exc()
             raise
-        log("DONE train_epoch", epoch=epoch, elapsed_sec=round(time.time() - started, 3))
-        return result
+
+        elapsed = time.time() - started
+        epoch_summary = {
+            "epoch": epoch,
+            "elapsed_sec": round(elapsed, 3),
+            "total_batches": total_batches,
+            "valid_batches": len(losses),
+            "skipped_batches": skipped_batches,
+            "train_loss": round(sum(losses) / len(losses), 8) if losses else None,
+            "train_loss_min": round(min(losses), 8) if losses else None,
+            "train_loss_max": round(max(losses), 8) if losses else None,
+            "train_loss_last": round(losses[-1], 8) if losses else None,
+            "lr": current_lr(optimizer),
+        }
+        append_csv_row(history_path, epoch_summary)
+        log("DONE train_epoch", **epoch_summary, history_csv=str(history_path))
 
     cellseg1_train.train_epoch = train_epoch_debug
 
